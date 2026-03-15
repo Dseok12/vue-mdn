@@ -1,11 +1,15 @@
 <template>
-  <h1>{{ hello }}</h1>
+  <LeftNav />
 </template>
 <script>
+import LeftNav from '@components/LeftNav.vue'
 export default {
+  components: {
+    LeftNav
+  },
   data() {
     return {
-      hello: 'Hello, Vue!',
+      
     }
   }
 }
