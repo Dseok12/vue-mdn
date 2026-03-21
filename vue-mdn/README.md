@@ -99,6 +99,81 @@ app.mount('#app');
 ```
 위와 같이 프로젝트가 실제로 실행되고 있을 때 사용되는 기본 설정입니다.<br/>
 vite.config.js와는 다른 개념입니다.
+
+
+## 3. 라우터 설정
+
+라우터를 사용함으로써 SPA의 장점을 극대화할 수 있습니다.
+
+라우터를 활용하여 url을 설정하면 조건에 맞는 컴포넌트만 불러와 페이지의 로딩 속도를 높일 수 있습니다.
+
+### 라우터 기본 설정
+
+https://router.vuejs.org/guide/
+
+위 링크는 vue router의 공식문서 링크 입니다.
+
+```bash
+npm i vue-router@4
+```
+
+위 명령어로 vue-router를 설치합니다.
+
+설치 후 main.js에 vue-router 사용 설정을 등록합니다.
+
+- **main.js 라우터 설정**
+    
+    ```javascript
+    import { createApp } from 'vue';
+    import App from './App.vue';
+    
+    import router from '@routers/router'; // ## 라우터 적용 ##
+    
+    // 전역에 reset.css ,base.css, common.css 적용
+    import '@css/base/reset.css';
+    import '@css/base/base.css';
+    import '@css/base/common.css';
+    
+    // 추후 미들웨어 적용 시 편리하게 하기 위해 app변수 생성
+    const app = createApp(App);
+    
+    /*
+      * 아래와 같은 방식입니다.
+      * 한 줄 계속 시작하게 되면 추후에 추가가 계속 되면 코드가 한 줄로 길어지기 때문에 가독성을 위해 여러 줄로 설정을 하면 좋습니다.
+      * app.use(router).mount('#app');
+    */
+    
+    // ## 라우터 적용 ##
+    app.use(router);
+    
+    // 앱 마운트
+    app.mount('#app');
+    
+    ```
+    
+
+유지보수를 위해 src폴터 하위에 routers폴더를 생성하고, router.js파일을 만듭니다.
+
+- **router.js 설정**
+    
+    ```javascript
+    import { createRouter, createWebHistory } from 'vue-router';
+    
+    const routes = [
+      // {path : '/', component : }
+    ];
+    
+    const router = createRouter({
+      history : createWebHistory(),
+      routes,
+    });
+    
+    export default router;
+    ```
+    
+
+vue에서 주로 사용 되어야 할 태그입니다.
+
 ---
 
 # 기본 문법
@@ -249,6 +324,325 @@ export default {
 
 컴포넌트를 등록하는 방법이였습니다.
 
+## 3. Vue.js의 for문
 
+아래는 vue에서 사용하는 for문 예시입니다.
+
+이해를 돕기 위해 한글로 변수를 만들어 사용한 부분도 있습니다.
+
+- **for문 사용 예시**
+    
+    ```javascript
+    /*
+    예시 경로
+    ./src/components/LeftNav.vue
+    */
+    <template>
+      <div class="left-nav">
+        <div class="left-nav__main-wrap">
+          <ul class="left-nav__main-box">
+            <li
+              class="left-nav__item"
+              v-for="원뎁스메뉴 in LeftNavMainArr" :key="원뎁스메뉴.id"
+            >
+              <a href="javascript:;" class="left-nav__link">
+                {{ 원뎁스메뉴.title }}
+              </a>
+    
+              <div class="left-nav__sub-wrap">
+                <ul class="left-nav__sub-box">
+                  <li
+                    class="left-nav__sub-item"
+                    v-for="투뎁스메뉴 in 원뎁스메뉴.children" :key="투뎁스메뉴.id"
+                  >
+                    <a href="javascript:;" class="left-nav__sub-link">
+                      {{ 투뎁스메뉴.title }}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </template>
+    
+    <script>
+    import '@css/components/LeftNav.css';
+    
+    export default {
+      name: 'LeftNav',
+      data() {
+        return {
+          LeftNavMainArr: [
+            {
+              id: 'menu-intro',
+              title: '소개',
+              path: '/intro',
+              children: [
+                {
+                  id: 'menu-intro-01',
+                  title: '개요',
+                  path: '/intro/summary'
+                },
+                {
+                  id: 'menu-intro-02',
+                  title: '디자인 원칙',
+                  path: '/intro/design-rule'
+                }
+              ]
+            },
+            {
+              id: 'menu-style-guide',
+              title: '스타일 가이드',
+              path: '/style-guide',
+              children: [
+                {
+                  id: 'menu-style-guide-01',
+                  title: '로고',
+                  path: '/style-guide/logo'
+                },
+                /* ...생략*/
+                {
+                  id: 'menu-style-guide-05',
+                  title: '아이콘',
+                  path: '/style-guide/icon'
+                }
+              ]
+            },
+            {
+              id: 'menu-component',
+              title: '컴포넌트',
+              path: '/component',
+              children: [
+                {
+                  id: 'menu-component-01',
+                  title: '배너',
+                  path: '/component/banner'
+                },
+                /* ...생략*/
+                {
+                  id: 'menu-component-11',
+                  title: '상품단',
+                  path: '/component/product-list'
+                }
+              ]
+            },
+            {
+              id: 'menu-project',
+              title: '프로젝트',
+              path: '/project',
+              children: [
+                {
+                  id: 'menu-project-01',
+                  title: '메가선생님',
+                  path: '/project/mega-teacher'
+                },
+                /* ...생략*/
+                {
+                  id: 'menu-project-03',
+                  title: '수능·내신',
+                  path: '/project/exam-school'
+                }
+              ]
+            }
+          ]
+        };
+      }
+    }
+    </script>
+    ```
+    
+
+위 예시에서 2depth 메뉴의 정보는 “children” 배열 안에 들어가 있습니다.
+
+### 유지 · 보수를 위한 data분리
+
+메뉴의 유지 · 보수성을 높이기 위해 데이터 형식으로 분리하였습니다.
+
+1. 데이터가 누적되는 부분을 data/데이터이름.js로 분리합니다.
+2. 데이터이름.js에서 export default를 합니다.
+3. 데이터가 사용되어야 할 vue파일에서 <script></script> 태그 안에서
+import 데이터이름 from “../data/데이터이름.js”를 실행합니다.
+4. data(){} 함수에 state로 등록합니다.
+5. 필요한 곳에 사용을 합니다.
+
+아래는 예제 코드입니다.
+
+- **데이터 분리 예제 코드**
+    
+    ```javascript
+    // 1. src/data/LeftMenu.js 파일
+    
+    const LeftMenu = [
+      {
+        id: "menu-intro",
+        title: "소개",
+        path: "/intro",
+        children: [
+          {
+            id: "menu-intro-01",
+            title: "개요",
+            path: "/intro/summary",
+          },
+          {
+            id: "menu-intro-02",
+            title: "디자인 원칙",
+            path: "/intro/design-rule",
+          },
+        ],
+      },
+      {
+        id: "menu-style-guide",
+        title: "스타일 가이드",
+        path: "/style-guide",
+        children: [
+          {
+            id: "menu-style-guide-01",
+            title: "로고",
+            path: "/style-guide/logo",
+          },
+          /* ...생략 */
+          {
+            id: "menu-style-guide-05",
+            title: "아이콘",
+            path: "/style-guide/icon",
+          },
+        ],
+      },
+      {
+        id: "menu-component",
+        title: "컴포넌트",
+        path: "/component",
+        children: [
+          {
+            id: "menu-component-01",
+            title: "배너",
+            path: "/component/banner",
+          },
+          /* ...생략 */
+          {
+            id: "menu-component-11",
+            title: "상품단",
+            path: "/component/product-list",
+          },
+        ],
+      },
+      {
+        id: "menu-project",
+        title: "프로젝트",
+        path: "/project",
+        children: [
+          {
+            id: "menu-project-01",
+            title: "메가선생님",
+            path: "/project/mega-teacher",
+          },
+          /* ...생략 */
+          {
+            id: "menu-project-03",
+            title: "수능·내신",
+            path: "/project/exam-school",
+          },
+        ],
+      },
+    ];
+    
+    /* 2번 */
+    export default LeftMenu;
+    ```
+    
+    ```javascript
+    <template>
+      <div class="left-nav" :class="{ 'left-nav--fixed': isFixed }">
+        <div class="left-nav__main-wrap">
+          <ul class="left-nav__main-box">
+            
+            <li
+              class="left-nav__item"
+              <!-- 5. 필요한 곳에 사용을 합니다. -->
+              v-for="원뎁스메뉴 in LeftNavMainArr" 
+              :key="원뎁스메뉴.id"
+              <!-- 5. 필요한 곳에 사용을 합니다. -->
+            >
+              <router-link
+                :to="원뎁스메뉴.path"
+                class="left-nav__link"
+                active-class="left-nav__link--active"
+                // @click.native="toggleMenu(원뎁스메뉴.id)"
+              >
+                {{ 원뎁스메뉴.title }}
+              </router-link>
+    
+              <div 
+                class="left-nav__sub-wrap" 
+                :class="{ 'is-open': activeMenuId === 원뎁스메뉴.id }"
+                v-if="원뎁스메뉴.children && 원뎁스메뉴.children.length > 0"
+              >
+                <div class="left-nav__sub-box">
+                  <ul class="left-nav__sub-inner">
+                    <li
+                      class="left-nav__sub-item"
+                      v-for="투뎁스메뉴 in 원뎁스메뉴.children" 
+                      :key="투뎁스메뉴.id"
+                    >
+                      <router-link
+                        :to="투뎁스메뉴.path"
+                        class="left-nav__sub-link"
+                        active-class="left-nav__sub-link--active"
+                      >
+                        {{ 투뎁스메뉴.title }}
+                      </router-link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+    
+          </ul>
+        </div>
+      </div>
+    </template>
+    
+    <script>
+    import '../css/components/LeftNav.css';
+    /*
+    	4. 데이터가 사용되어야 할 vue파일에서 <script></script> 태그 안에서
+    	import 데이터이름 from “../data/데이터이름.js”를 실행합니다.
+    */
+    import LeftMenu from '../data/LeftMenu';
+    
+    export default {
+      name: 'LeftNav',
+      
+      // 컴포넌트가 기억하고 있어야 할 상태(변수)들을 정의하는 곳입니다.
+      data() {
+        return {
+    	    /* 5. data(){} 함수에 state로 등록합니다. */
+          LeftNavMainArr: LeftMenu, 
+        };
+      },
+    
+      // 컴포넌트가 화면에 "처음 등장(Mount)"할 때 딱 한 번 실행되는 곳입니다.
+      mounted() {
+        
+      },
+    
+      // 컴포넌트가 화면에서 "사라지기 직전(Destroy)"에 실행되는 곳입니다. (다른 페이지로 갈 때 등)
+      beforeDestroy() {
+        
+      },
+    
+      // 사용할 기능(함수)들을 모아두는 곳입니다.
+      methods: {
+        
+        }
+      }
+    }
+    </script>
+    ```
+    
+
+## 4. Vue.js의 if문
 
 
