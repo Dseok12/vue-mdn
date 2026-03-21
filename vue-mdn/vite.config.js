@@ -37,7 +37,9 @@ export default defineConfig({
       '@pages': path.resolve(__dirname, 'src/pages'),
 
       '@routers': path.resolve(__dirname, 'src/routers'),
-      '@stores': path.resolve(__dirname, 'src/stores')
+      '@stores': path.resolve(__dirname, 'src/stores'),
+      '@dataes': path.resolve(__dirname, 'src/dataes'),
+
     }
   },
 
