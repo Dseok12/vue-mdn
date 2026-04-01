@@ -1,0 +1,23 @@
+.paragraph{margin-top: 3%;}
+
+.paragraph-1{}
+.paragraph-1 > h2{font-size: 3rem;font-weight: 700;margin-bottom: 5%;}
+.paragraph-1 > p{font-weight: 500;}
+
+.paragraph-2{}
+.paragraph-2 > h3{font-size: 2rem;font-weight: 700;margin-bottom: 3%;}
+.paragraph-2 > p{font-weight: 500;}
+
+.paragraph-3{}
+.paragraph-3 > h3{font-size: 2rem;font-weight: 700;margin-bottom: 3%;}
+.paragraph-3 > p{font-weight: 500;}
+
+.paragraph-4{}
+.paragraph-4 > h3{font-size: 2rem;font-weight: 700;margin-bottom: 3%;}
+.paragraph-4 > p{font-weight: 500;}
+
+.paragraph-list{margin-top: 1%;}
+.paragraph-list > li{position: relative;padding-left: 1.5%;margin-top: 20px;color: #333;}
+.paragraph-list > li::after{content: '-';position: absolute;left: 0;top: 0;}
+.paragraph-list > li > strong{font-size: 1.2rem;font-weight: 500;display: block;margin-bottom: 1.5%;}
+.paragraph-list > li > p{font-size: 1rem;font-weight: 400;line-height: 1.3;}

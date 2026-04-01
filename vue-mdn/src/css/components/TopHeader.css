@@ -1,90 +1,106 @@
 /* -------------------------------------------
-   1. 헤더 전체 감싸는 영역 (배경, 하단 선)
+  1. 헤더 전체 감싸는 영역 (배경, 하단 선)
 ------------------------------------------- */
 .top-header__wrap {
   width: 100%;
-  background-color: #ffffff; /* 하얀색 배경 */
-  border-bottom: 1px solid #e5e5e5; /* 이미지에 보이는 연한 회색 구분선 */
-  margin-bottom: 40px; /* 헤더와 본문 사이의 간격 (디자인에 맞게 조절) */
+  background-color: #ffffff;
+  /* 하얀색 배경 */
+  border-bottom: 1px solid #e5e5e5;
+  /* 이미지에 보이는 연한 회색 구분선 */
+  margin-bottom: 40px;
+  /* 헤더와 본문 사이의 간격 (디자인에 맞게 조절) */
 }
 
 /* -------------------------------------------
-   2. 헤더 내부 콘텐츠 (너비 제한, 양끝 정렬)
+  2. 헤더 내부 콘텐츠 (너비 제한, 양끝 정렬)
 ------------------------------------------- */
 .top-header__inner {
-  max-width: calc(100% - 120px); /* 콘텐츠가 들어갈 최대 너비 (프로젝트에 맞게 조절하세요) */
-  margin: 0 auto; /* 가운데 정렬 */
-  height: 80px; /* 헤더의 전체 높이 */
-  padding: 0 20px; /* 브라우저 창이 좁아질 때를 대비한 좌우 여백 */
-  
+  max-width: calc(100% - 120px);
+  /* 콘텐츠가 들어갈 최대 너비 (프로젝트에 맞게 조절하세요) */
+  margin: 0 auto;
+  /* 가운데 정렬 */
+  height: 80px;
+  /* 헤더의 전체 높이 */
+  padding: 0 20px;
+  /* 브라우저 창이 좁아질 때를 대비한 좌우 여백 */
+
   display: flex;
-  justify-content: space-between; 
-  align-items: center; /* 수직(위아래) 가운데 정렬 */
+  justify-content: space-between;
+  align-items: center;
+  /* 수직(위아래) 가운데 정렬 */
   box-sizing: border-box;
 }
 
 /* -------------------------------------------
-   3. 왼쪽 로고 영역
+  3. 왼쪽 로고 영역
 ------------------------------------------- */
 .top-header__logo {
   display: flex;
   align-items: center;
 }
+
 .top-header__logo img {
-  height: 28px; /* 로고 이미지 크기에 맞게 조절해주세요 */
+  height: 28px;
+  /* 로고 이미지 크기에 맞게 조절해주세요 */
   /* width는 자동으로 비율에 맞게 줄어들도록 둡니다 */
 }
 
 /* -------------------------------------------
-   4. 오른쪽 오른쪽 네비게이션 리스트
+  4. 오른쪽 오른쪽 네비게이션 리스트
 ------------------------------------------- */
 .top-header__nav {
-  height: 100%; /* 부모(inner)의 높이인 80px을 꽉 채웁니다 */
+  height: 100%;
+  /* 부모(inner)의 높이인 80px을 꽉 채웁니다 */
 }
 
 .top-header__nav-list {
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 50px; /* 메뉴 글자들 사이의 간격 */
+  gap: 30px;
   font-weight: bold;
   height: 100%;
   margin: 0;
   padding: 0;
-  list-style: none; /* 기본 불릿(점) 기호 제거 */
+  list-style: none;
+  text-align: center;
 }
 
 .top-header__nav-item {
   display: flex;
   align-items: center;
-  margin-left: 50px; /* 메뉴 글자들 사이의 간격 */
+  /* 메뉴 글자들 사이의 간격 */
 }
 
 /* -------------------------------------------
-   5. 메뉴 링크 (기본 상태)
+  5. 메뉴 링크 (기본 상태)
 ------------------------------------------- */
 .top-header__nav-link {
   display: flex;
-  align-items: center; /* 텍스트를 수직 가운데로 */
-  height: 100%; /* 80px 높이를 꽉 채워서 클릭 영역을 넓혀줍니다 */
-  
-  color: #333333; /* 텍스트 색상 */
-  font-size: 17px; 
+  align-items: center;
+  /* 텍스트를 수직 가운데로 */
+  height: 100%;
+  /* 80px 높이를 꽉 채워서 클릭 영역을 넓혀줍니다 */
+
+  color: #333333;
+  /* 텍스트 색상 */
+  font-size: 17px;
   font-weight: 500;
-  text-decoration: none; /* 링크 기본 밑줄 제거 */
-  position: relative; /* 활성화 선(::after)의 위치 기준점이 됩니다 */
+  text-decoration: none;
+  /* 링크 기본 밑줄 제거 */
+  position: relative;
+  /* 활성화 선(::after)의 위치 기준점이 됩니다 */
 }
 
 /* 마우스 올렸을 때 살짝 진해지게 디테일 추가 (선택 사항) */
 .top-header__nav-link:hover {
-  color: #000000; 
+  color: #000000;
 }
 
 /* -------------------------------------------
-   6. 메뉴 링크 (활성화/선택된 상태)
+  6. 메뉴 링크 (활성화/선택된 상태)
 ------------------------------------------- */
 .top-header__nav-link--active {
-  font-weight: 700; /* 글씨를 아주 굵게 */
+  font-weight: 700;
+  /* 글씨를 아주 굵게 */
   color: #111111;
 }
 
@@ -93,8 +109,12 @@
   content: "";
   position: absolute;
   left: 0;
-  bottom: 0; /* 기준점(.top-header__nav-link)의 맨 아래에 딱 붙임! */
-  width: 100%; /* 글자 너비만큼 선을 그음 */
-  height: 4px; /* 파란색 선의 두께 */
-  background-color: #2b3b6d; /* 이미지에 있는 진한 파란색 (디자인 가이드가 있다면 그 색으로 변경) */
+  bottom: 0;
+  /* 기준점(.top-header__nav-link)의 맨 아래에 딱 붙임! */
+  width: 100%;
+  /* 글자 너비만큼 선을 그음 */
+  height: 4px;
+  /* 파란색 선의 두께 */
+  background-color: #2b3b6d;
+  /* 이미지에 있는 진한 파란색 (디자인 가이드가 있다면 그 색으로 변경) */
 }

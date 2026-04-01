@@ -4,7 +4,7 @@ const LeftMenu = [
   {
     id: "menu-intro",
     title: "소개",
-    path: "/intro",
+    path: "/intro/summary",
     children: [
       {
         id: "menu-intro-01",
@@ -21,7 +21,7 @@ const LeftMenu = [
   {
     id: "menu-style-guide",
     title: "스타일 가이드",
-    path: "/style-guide",
+    path: "/style-guide/logo",
     children: [
       {
         id: "menu-style-guide-01",
@@ -53,7 +53,7 @@ const LeftMenu = [
   {
     id: "menu-component",
     title: "컴포넌트",
-    path: "/component",
+    path: "/component/banner",
     children: [
       {
         id: "menu-component-01",
@@ -115,7 +115,7 @@ const LeftMenu = [
   {
     id: "menu-project",
     title: "프로젝트",
-    path: "/project",
+    path: "/project/mega-teacher",
     children: [
       {
         id: "menu-project-01",
