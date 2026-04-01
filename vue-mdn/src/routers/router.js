@@ -53,6 +53,21 @@ const routes = [
   { path: '/project/mega-teacher', component: DefaultPage },
   { path: '/project/mega-pass', component: DefaultPage },
   { path: '/project/exam-school', component: DefaultPage },
+  { path: '/project/univ-exam', component: DefaultPage },
+  { path: '/project/exam-highscool', component: DefaultPage },
+  { path: '/project/event-promotion', component: DefaultPage },
+  { path: '/project/e-market', component: DefaultPage },
+  { path: '/project/mega-campaign', component: DefaultPage },
+
+  // 5-1. 프로젝트 - 게시물아이템 (Project)
+  { path: '/project/mega-teacher/:id', component: DefaultPage },
+  { path: '/project/mega-pass/:id', component: DefaultPage },
+  { path: '/project/exam-school/:id', component: DefaultPage },
+  { path: '/project/univ-exam/:id', component: DefaultPage },
+  { path: '/project/exam-highscool/:id', component: DefaultPage },
+  { path: '/project/event-promotion/:id', component: DefaultPage },
+  { path: '/project/e-market/:id', component: DefaultPage },
+  { path: '/project/mega-campaign/:id', component: DefaultPage },
 
   // 6. 404 Not Found (정의되지 않은 잘못된 경로 접근 시)
   { path: '/:pathMatch(.*)*', component: NotFound }

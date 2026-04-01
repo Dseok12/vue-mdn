@@ -132,6 +132,31 @@ const LeftMenu = [
         title: "수능·내신",
         path: "/project/exam-school",
       },
+      {
+        id: "menu-project-04",
+        title: "대학별고사",
+        path: "/project/univ-exam",
+      },
+      {
+        id: "menu-project-05",
+        title: "입시정보",
+        path: "/project/exam-highscool",
+      },
+      {
+        id: "menu-project-06",
+        title: "이벤트ㆍ프로모션",
+        path: "/project/event-promotion",
+      },
+      {
+        id: "menu-project-07",
+        title: "온라인서점",
+        path: "/project/e-market",
+      },
+      {
+        id: "menu-project-08",
+        title: "메가캠페인",
+        path: "/project/mega-campaign",
+      },
     ],
   },
 ];
