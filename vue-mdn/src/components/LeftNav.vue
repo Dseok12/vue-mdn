@@ -9,7 +9,7 @@
           :key="원뎁스메뉴.id"
         >
           <a
-            href="#"
+            :href="원뎁스메뉴.path"
             class="left-nav__link"
             :class="{ 'left-nav__link--active': isParentActive(원뎁스메뉴.path) }"
             @click.prevent="toggleMenu(원뎁스메뉴.id)"
