@@ -8,19 +8,19 @@
       <nav class="top-header__nav">
         <ul class="top-header__nav-list">
           <li class="top-header__nav-item">
-            <router-link to="/intro/summary" class="top-header__nav-link" active-class="top-header__nav-link--active">소개</router-link>
+            <router-link to="/intro/summary" class="top-header__nav-link" :class="{ 'top-header__nav-link--active': $route.path.startsWith('/intro') }">소개</router-link>
           </li>
           <li class="top-header__nav-item">
-            <router-link to="/style-guide/logo" class="top-header__nav-link" active-class="top-header__nav-link--active">스타일가이드</router-link>
+            <router-link to="/style-guide/logo" class="top-header__nav-link" :class="{ 'top-header__nav-link--active': $route.path.startsWith('/style-guide') }">스타일가이드</router-link>
           </li>
           <li class="top-header__nav-item">
-            <router-link to="/component/banner" class="top-header__nav-link" active-class="top-header__nav-link--active">컴포넌트</router-link>
+            <router-link to="/component/banner" class="top-header__nav-link" :class="{ 'top-header__nav-link--active': $route.path.startsWith('/component') }">컴포넌트</router-link>
           </li>
           <li class="top-header__nav-item">
-            <router-link to="/project/mega-teacher" class="top-header__nav-link" active-class="top-header__nav-link--active">프로젝트</router-link>
+            <router-link to="/project/mega-teacher" class="top-header__nav-link" :class="{ 'top-header__nav-link--active': $route.path.startsWith('/project') }">프로젝트</router-link>
           </li>
           <li class="top-header__nav-item">
-            <router-link to="/admin" class="top-header__nav-link" active-class="top-header__nav-link--active">관리자</router-link>
+            <router-link to="/admin" class="top-header__nav-link" :class="{ 'top-header__nav-link--active': $route.path.startsWith('/admin') }">관리자</router-link>
           </li>
         </ul>
       </nav>

@@ -644,5 +644,60 @@ import 데이터이름 from “../data/데이터이름.js”를 실행합니다.
     
 
 ## 4. Vue.js의 if문
+Vue.js의 if문은 asp와 비슷하게 html안에 적용이 가능합니다.
+조금 다른 부분은 태그 안에 직접 적용이 가능하다는 부분입니다.
+```javascript
+/*
+경로
+./src/components/LeftNav.vue
+문법에 집중하기 위하여 if문을 제외한 나머지는 example로 대체하였습니다.
+*/
+<div 
+  class="example" 
+  v-if="원뎁스메뉴.children && 원뎁스메뉴.children.length > 0"
+>
+  <div class="example">
+    <ul class="example">
+      <li
+        class="example"
+        v-for="example" 
+        :key="example"
+      >
+        <router-link
+          :to="example"
+          class="example"
+          active-class="example"
+        >
+          example
+        </router-link>
+      </li>
+    </ul>
+  </div>
+</div>
+```
+위 예시(MDS 프로젝트)와 같이 Vue의 if문은
+v-if = "조건"의 형식으로 사용이 가능합니다.
+( v-if = "조건" v-else-if = "조건" v-else )의 형식으로 사용이 가능합니다.
 
+```javascript
+/* 제미나이 예시 */
+<template>
+  <div class="practice-wrap">
+    <h2>1. v-if, v-else-if, v-else (물리적 렌더링)</h2>
+    <div class="box-group">
+      <div v-if="userRole === 'admin'" class="box admin-box">
+        👑 관리자 전용 메뉴입니다. (v-if)
+      </div>
+      
+      <div v-else-if="userRole === 'member'" class="box member-box">
+        👤 일반 회원 메뉴입니다. (v-else-if)
+      </div>
+      
+      <div v-else class="box guest-box">
+        🔒 로그인이 필요합니다. (v-else)
+      </div>
+    </div>
+  </div>
+</template>
+```
 

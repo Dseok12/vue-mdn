@@ -53,15 +53,15 @@
         </div>
         <div class="paragraph paragraph-3">
             <h3>개발 과정</h3>
-            <div>
+            <p>
                 본 디자인 시스템은 MVP(최소 기능 제품, Minimum Viable Product)로, 메가스터디 사이트에서 자주 사용되는 구성 요소와 반복적으로 발견되는 문제를 분석하여 사용자에게 일관된 UI/UX를 제공하고 작업 효율성을 높이기 위해 개발 범위를 설정하였습니다. 이 초기 버전에서 얻은 피드백을 바탕으로 지속적으로 개선을 진행할 예정입니다.
-            </div>
+            </p>
         </div>
         <div class="paragraph paragraph-4">
             <h3>활용 범위</h3>
-            <div>
+            <p>
                 본 디자인 시스템은 메가스터디 웹사이트, 모바일 웹의 UI/UX 설계 및 개발에 참고할 수 있도록 개발되었습니다.
-            </div>
+            </p>
         </div>
     </div>
     </div>

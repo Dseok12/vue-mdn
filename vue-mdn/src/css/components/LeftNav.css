@@ -47,7 +47,8 @@
   transition: color 0.2s ease;
 }
 .left-nav__link--active {
-  color: #4b6eed;
+  color: #4b6eed !important;
+  transition: color 0.1s ease;
 }
 
 .left-nav__sub-wrap {
