@@ -5,6 +5,20 @@ import NotFound from '@pages/NotFound.vue';
 
 import IntroSummary from '@pages/IntroSummary.vue';
 import IntroDesignRule from '@pages/IntroDesignRule.vue';
+import FontStyle from '@pages/FontStyle.vue';
+
+import Banner from '@pages/component/Banner.vue';
+import QuickMenu from '@pages/component/QuickMenu.vue';
+import Board from '@pages/component/Board.vue';
+import TabMenu from '@pages/component/TabMenu.vue';
+import Review from '@pages/component/Review.vue';
+import Event from '@pages/component/Event.vue';
+import SpecialTeacherTab from '@pages/component/SpecialTeacherTab.vue';
+import Video from '@pages/component/Video.vue';
+import Popup from '@pages/component/Popup.vue';
+import Coupon from '@pages/component/Coupon.vue';
+import ProductList from '@pages/component/ProductList.vue';
+
 
 
 
@@ -19,22 +33,22 @@ const routes = [
   // 3. 스타일 가이드 (Style Guide)
   { path: '/style-guide/logo', component: DefaultPage },
   { path: '/style-guide/color', component: DefaultPage },
-  { path: '/style-guide/font', component: DefaultPage },
+  { path: '/style-guide/font', component: FontStyle },
   { path: '/style-guide/layout', component: DefaultPage },
   { path: '/style-guide/icon', component: DefaultPage },
 
   // 4. 컴포넌트 (Component)
-  { path: '/component/banner', component: DefaultPage },
-  { path: '/component/quick-menu', component: DefaultPage },
-  { path: '/component/board', component: DefaultPage },
-  { path: '/component/tab-menu', component: DefaultPage },
-  { path: '/component/review', component: DefaultPage },
-  { path: '/component/event', component: DefaultPage },
-  { path: '/component/special-teacher-tab', component: DefaultPage },
-  { path: '/component/video', component: DefaultPage },
-  { path: '/component/popup', component: DefaultPage },
-  { path: '/component/coupon', component: DefaultPage },
-  { path: '/component/product-list', component: DefaultPage },
+  { path: '/component/banner', component: Banner },
+  { path: '/component/quick-menu', component: QuickMenu },
+  { path: '/component/board', component: Board },
+  { path: '/component/tab-menu', component: TabMenu },
+  { path: '/component/review', component: Review },
+  { path: '/component/event', component: Event },
+  { path: '/component/special-teacher-tab', component: SpecialTeacherTab },
+  { path: '/component/video', component: Video },
+  { path: '/component/popup', component: Popup },
+  { path: '/component/coupon', component: Coupon },
+  { path: '/component/product-list', component: ProductList },
 
   // 4-1. 컴포넌트 - 게시물아이템 (Component)
   { path: '/component/banner/:megarandom', component: DefaultPage },

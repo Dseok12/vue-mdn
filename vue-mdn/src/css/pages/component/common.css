@@ -1,0 +1,4 @@
+/* 페이지 컴포넌트 common */
+.page-component__title-wrap{}
+.page-component__sub-tit{font-size: 1.5rem;font-weight: 400;display: flex;align-items: center;margin-bottom: 0.5rem;}
+.page-component__main-tit{font-size: 3rem;font-weight: 700;display: flex;align-items: center;}
