@@ -19,7 +19,7 @@
           <li class="top-header__nav-item">
             <router-link to="/project/mega-teacher" class="top-header__nav-link" :class="{ 'top-header__nav-link--active': $route.path.startsWith('/project') }">프로젝트</router-link>
           </li>
-          <li class="top-header__nav-item">
+          <li class="top-header__nav-item" v-if="$route.path === '/admin'">
             <router-link to="/admin" class="top-header__nav-link" :class="{ 'top-header__nav-link--active': $route.path.startsWith('/admin') }">관리자</router-link>
           </li>
         </ul>
