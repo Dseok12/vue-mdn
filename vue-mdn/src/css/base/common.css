@@ -4,4 +4,4 @@
 .appAllTotalWrap {width: 100%;min-height: 100vh;background-color: #fafbfc;}
 /* 좌측 메뉴와 우측 본문을 감싸는 Flex 컨테이너 */
 .appContainerWrap {max-width: calc(100% - 80px);margin: 0 auto;display: flex;align-items: flex-start;gap: 20px;padding: 0 20px 60px 20px;box-sizing: border-box;}
-.content-area{width: 90%;background-color: #fff;padding: 4% 2%;border-radius: 15px;border: 1px solid #e5e7eb;}
+.content-area{width: 100%;background-color: #fff;padding: 4% 2%;border-radius: 15px;border: 1px solid #e5e7eb;}

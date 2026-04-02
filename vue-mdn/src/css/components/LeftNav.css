@@ -1,98 +1,18 @@
-.left-nav {
-  width: 280px;
-  flex-shrink: 0; /* 우측 본문이 커져도 좌측 메뉴 너비 유지 */
-  /* JS 이벤트 대신 CSS sticky 적용하여 성능 및 레이아웃 안정성 확보 */
-  position: sticky;
-  top: 40px; 
-  max-height: calc(100vh - 80px); /* 화면 길이를 넘어갈 경우 대비 */
-  overflow-y: auto; /* 메뉴가 많으면 좌측 영역만 스크롤 가능 */
-  
-  display: flex;
-  flex-direction: column;
-  padding: 20px 24px;
-  border-radius: 12px; 
-  border: 1px solid #e5e7eb;
-  box-sizing: border-box;
-  background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
-}
-
-/* 스크롤바 커스텀 (디자인 보강) */
-.left-nav::-webkit-scrollbar {
-  width: 6px;
-}
-.left-nav::-webkit-scrollbar-thumb {
-  background-color: #e5e5e5;
-  border-radius: 10px;
-}
-
-.left-nav__item {
-  border-bottom: 1px solid #f0f0f0;
-  padding: 20px 0;
-}
-
-.left-nav__item > a{
-  display: block;
-  width: 100%;
-}
-
-.left-nav__item:last-child {
-  border-bottom: none;
-}
-
-.left-nav__link {
-  font-weight: 700;
-  font-size: 18px;
-  color: #111;
-  transition: color 0.2s ease;
-}
-.left-nav__link--active {
-  color: #4b6eed !important;
-  transition: color 0.1s ease;
-}
-
-.left-nav__sub-wrap {
-  display: grid;
-  grid-template-rows: 0fr; 
-  opacity: 0; 
-  transition: all 0.35s ease-in-out; 
-}
-.left-nav__sub-wrap.is-open {
-  grid-template-rows: 1fr; 
-  opacity: 1; 
-  margin-bottom: 24px;
-}
-
-.left-nav__sub-box {
-  overflow: hidden; 
-  min-height: 0;
-}
-
-.left-nav__sub-inner {
-  background-color: #f7f8fa;
-  border-radius: 8px;
-  padding: 20px 24px;
-  margin-top: 15px;
-}
-
-.left-nav__sub-item {
-  margin-bottom: 16px;
-}
-.left-nav__sub-item > a{
-  display: block;
-  width: 100%;
-}
-.left-nav__sub-item:last-child {
-  margin-bottom: 0;
-}
-
-.left-nav__sub-link {
-  font-size: 16px;
-  font-weight: 400;
-  color: #111;
-  transition: color 0.2s ease;
-}
+.left-nav {width: 16%;flex-shrink: 0;position: sticky;top: 40px; max-height: calc(100vh - 80px);overflow-y: auto;display: flex;flex-direction: column;padding: 20px 24px;border-radius: 12px; border: 1px solid #e5e7eb;box-sizing: border-box;background-color: #fff;box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);}
+.left-nav::-webkit-scrollbar {width: 6px;}
+.left-nav::-webkit-scrollbar-thumb {background-color: #e5e5e5;border-radius: 10px;}
+.left-nav__item {border-bottom: 1px solid #f0f0f0;padding: 20px 0;}
+.left-nav__item > a{display: block;width: 100%;}
+.left-nav__item:last-child {border-bottom: none;}
+.left-nav__link {font-weight: 700;font-size: 18px;color: #111;transition: color 0.2s ease;}
+.left-nav__link--active {color: #4b6eed !important;transition: color 0.1s ease;}
+.left-nav__sub-wrap {display: grid;grid-template-rows: 0fr; opacity: 0; transition: all 0.35s ease-in-out; }
+.left-nav__sub-wrap.is-open {grid-template-rows: 1fr; opacity: 1; margin-bottom: 24px;}
+.left-nav__sub-box {overflow: hidden; min-height: 0;}
+.left-nav__sub-inner {background-color: #f7f8fa;border-radius: 8px;padding: 20px 24px;margin-top: 15px;}
+.left-nav__sub-item {margin-bottom: 16px;}
+.left-nav__sub-item > a{display: block;width: 100%;}
+.left-nav__sub-item:last-child {margin-bottom: 0;}
+.left-nav__sub-link {font-size: 16px;font-weight: 400;color: #111;transition: color 0.2s ease;}
 .left-nav__sub-link:hover,
-.left-nav__sub-link--active {
-  color: #4b6eed;
-}
+.left-nav__sub-link--active {color: #4b6eed;}
