@@ -29,7 +29,7 @@
 .page-component-list__item-code-area > a:hover{text-decoration: underline;text-underline-position: under;}
 .page-component-list__item-code-area > a > span{position: relative;}
 .page-component-list__item-code-area > a > span::after{content: "▼";font-size: 0.8rem; position: absolute;right: -18%;top: 50%;transform: translateY(-50%);}
-.codeArea__inner{background-color: #F8F8F8;border-radius: 0px 0px 5px 5px; max-height: 0; display: none; overflow: hidden; transition: max-height 0.3s ease-out;border-top: 0px dashed #888;}
-.codeArea__inner--box{padding: 1rem;text-align: left;}
+.codeArea__inner{background-color: #F8F8F8;border-radius: 0px 0px 5px 5px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease;border-top: 0px dashed #888;}
+.codeArea__inner--box{padding: 1.5rem 1rem;text-align: left;}
 .codeArea__inner--box > pre > .language-css{text-align: left;}
 .codeArea-is-open{display: block; max-height: 200px; overflow-y: scroll; border-top: 1px dashed #888;}

@@ -5,6 +5,7 @@
         <router-link to="/"><img src="@/assets/img/logo.jpg" alt="Vue MDN Logo"></router-link>
       </h1>
       
+      <!-- for문 및 데이터 분리 예정 -->
       <nav class="top-header__nav">
         <ul class="top-header__nav-list">
           <li class="top-header__nav-item">
@@ -24,6 +25,7 @@
           </li>
         </ul>
       </nav>
+      <!-- for문 및 데이터 분리 예정 -->
       
     </div>
   </div>
