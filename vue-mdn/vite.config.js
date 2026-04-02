@@ -23,6 +23,8 @@ import path from 'node:path'
  * import Header from '@components/common/Header.vue'
  */
 export default defineConfig({
+  // 저장소 이름인 vue-mdn을 양쪽에 슬래시(/)를 포함하여 입력합니다.
+  base: '/vue-mdn/',
   plugins: [vue()],
 
   resolve: {
