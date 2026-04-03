@@ -3,10 +3,14 @@ import { createRouter, createWebHistory } from 'vue-router';
 import DefaultPage from '@pages/DefaultPage.vue';
 import NotFound from '@pages/NotFound.vue';
 
+/* @ 소개 컴포넌트 등록 */
 import IntroSummary from '@pages/IntroSummary.vue';
 import IntroDesignRule from '@pages/IntroDesignRule.vue';
+
+/* @ 스타일가이드 컴포넌트 등록 */
 import FontStyle from '@pages/FontStyle.vue';
 
+/* @ 배너 컴포넌트 등록 */
 import Banner from '@pages/component/Banner.vue';
 import QuickMenu from '@pages/component/QuickMenu.vue';
 import Board from '@pages/component/Board.vue';
@@ -18,6 +22,16 @@ import Video from '@pages/component/Video.vue';
 import Popup from '@pages/component/Popup.vue';
 import Coupon from '@pages/component/Coupon.vue';
 import ProductList from '@pages/component/ProductList.vue';
+
+/* @ 프로젝트 컴포넌트 등록 */
+import MegaTeacher from '@pages/project/MegaTeacher.vue';
+import MegaPass from '@pages/project/MegaPass.vue';
+import SatGpa from '../pages/project/SatGpa.vue';
+import UnivExam from '@pages/project/UniExam.vue';
+import CollegeInfo from '../pages/project/CollegeInfo.vue';
+import OnlineBookstore from '../pages/project/OnlineBookstore.vue';
+import MegaCampaign from '../pages/project/MegaCampaign.vue';
+
 
 
 
@@ -64,14 +78,14 @@ const routes = [
   { path: '/component/product-list/:megarandom', component: DefaultPage },
 
   // 5. 프로젝트 (Project)
-  { path: '/project/mega-teacher', component: DefaultPage },
-  { path: '/project/mega-pass', component: DefaultPage },
-  { path: '/project/exam-school', component: DefaultPage },
-  { path: '/project/univ-exam', component: DefaultPage },
-  { path: '/project/exam-highscool', component: DefaultPage },
+  { path: '/project/mega-teacher', component: MegaTeacher },
+  { path: '/project/mega-pass', component: MegaPass },
+  { path: '/project/exam-school', component: SatGpa },
+  { path: '/project/univ-exam', component: UnivExam },
+  { path: '/project/exam-highscool', component: CollegeInfo },
   { path: '/project/event-promotion', component: DefaultPage },
-  { path: '/project/e-market', component: DefaultPage },
-  { path: '/project/mega-campaign', component: DefaultPage },
+  { path: '/project/e-market', component: OnlineBookstore },
+  { path: '/project/mega-campaign', component: MegaCampaign },
 
   // 5-1. 프로젝트 - 게시물아이템 (Project)
   { path: '/project/mega-teacher/:id', component: DefaultPage },
