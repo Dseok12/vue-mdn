@@ -175,6 +175,7 @@
 <script>
 import '../../css/pages/component/common.css';
 import '../../css/pages/component/banner.css';
+import PageComponentListItem from '../../components/PageComponentListItem.vue';
 
 export default {
     data() {
@@ -182,6 +183,9 @@ export default {
             // 초기값 null은 아무것도 열리지 않은 상태입니다.
             activeCodeSlideId: null,   
         };
+    },
+    components : {
+        PageComponentListItem
     },
     methods : {
         toggleCodeSlide(id) {

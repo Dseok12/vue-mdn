@@ -4,7 +4,7 @@
         <div class="page-component-list__item">
             <div class="banner-list__item-img">
                 <a href="/src/assets/img/event_240916_32778.png" target="_blank">
-                    <img src="../../assets/img/event_240916_32778.png" alt="">
+                    <img src="../assets/img/event_240916_32778.png" alt="">
                 </a>
             </div>
             <div class="page-component-list__item-txt">
@@ -34,8 +34,6 @@
 </template>
 
 <script>
-
-import '../css/pages/component/common.css';
 
 export default {
     data() {
