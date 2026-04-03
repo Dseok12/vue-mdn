@@ -80,7 +80,7 @@
     </div>
 </template>
 <script>
-import '../css/pages/intro.css';
+import '../../css/pages/intro.css';
 export default {
     
 }

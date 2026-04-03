@@ -8,7 +8,7 @@ import IntroSummary from '@pages/IntroSummary.vue';
 import IntroDesignRule from '@pages/IntroDesignRule.vue';
 
 /* @ 스타일가이드 컴포넌트 등록 */
-import FontStyle from '@pages/FontStyle.vue';
+import FontStyle from '@pages/styleguide/FontStyle.vue';
 
 /* @ 배너 컴포넌트 등록 */
 import Banner from '@pages/component/Banner.vue';

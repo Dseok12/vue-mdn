@@ -3,8 +3,7 @@
         <h2 class="page-title">현재 페이지 경로: {{ currentPath }}</h2>
         <p class="page-desc">
             이곳은 본문 영역입니다.<br/>
-            추후 <b>{{ currentPath }}</b> 에 해당하는 전용 컴포넌트를 만들어 <br/>
-            router.js에 연결할 예정입니다.
+            추후 <b>{{ currentPath }}</b> 에 해당하는 전용 컴포넌트를 만들어 router.js에 연결할 예정입니다.
         </p>
     </div>
 </template>
