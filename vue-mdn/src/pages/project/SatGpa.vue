@@ -1,6 +1,9 @@
 <template>
     <div>
-        <h1>수능내신</h1>
+        <div class="page-project__tit-box">
+            <div class="page-project__sub-tit">프로젝트</div>
+            <h1 class="page-project__tit">수능내신</h1>
+        </div>
     </div>
 </template>
 <script>
