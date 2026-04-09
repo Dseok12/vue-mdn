@@ -1,8 +1,13 @@
 <template>
     <div class="page-component__all">
-        <div class="page-component__title-wrap">
-            <p class="page-component__sub-tit">컴포넌트</p>
-            <h2 class="page-component__main-tit">쿠폰</h2>
+        <div class="page-component__top-wrap">
+            <div class="page-component__title-wrap">
+                <p class="page-component__sub-tit">컴포넌트</p>
+                <h2 class="page-component__main-tit">쿠폰</h2>
+            </div>
+            <div class="page-component-btn-wrap">
+                <router-link to="../posting/post" class="page-component__add-post__btn" >게시글 등록</router-link>
+            </div>
         </div>
         <div class="page-component-list__wrap">
             <div class="page-component-list__box">

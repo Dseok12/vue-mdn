@@ -3,6 +3,8 @@
 .page-project__sub-tit{display: flex;align-items: center;font-size: 1.5rem;font-weight: 400;margin-bottom: 0.5rem;}
 .page-project__tit{display: flex;font-size: 3rem;font-weight: 700;}
 
+.page-component__top-wrap{display: flex;align-items: flex-start;justify-content: space-between}
+
 
 
 

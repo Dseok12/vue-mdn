@@ -32,6 +32,9 @@ import CollegeInfo from '../pages/project/CollegeInfo.vue';
 import OnlineBookstore from '../pages/project/OnlineBookstore.vue';
 import MegaCampaign from '../pages/project/MegaCampaign.vue';
 
+/* @ 게시글 등록 */
+import Post from '../pages/posting/Post.vue';
+
 
 
 
@@ -96,6 +99,9 @@ const routes = [
   { path: '/project/event-promotion/:id', component: DefaultPage },
   { path: '/project/e-market/:id', component: DefaultPage },
   { path: '/project/mega-campaign/:id', component: DefaultPage },
+
+  { path: '/posting/post', component: Post },
+  { path: '/project/post/:id', component: DefaultPage },
 
   // 6. 404 Not Found (정의되지 않은 잘못된 경로 접근 시)
   { path: '/:pathMatch(.*)*', component: NotFound }
