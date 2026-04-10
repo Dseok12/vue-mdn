@@ -12,12 +12,12 @@
 .page-component-btn__cancel-no{background-color: #f25a5e;}
 
 .editor-container {display: flex;gap: 20px;margin-top: 0;align-items: flex-start; flex-direction: column;}
-.input-area {flex: 1;padding: 1rem;border: 1px solid #e0e0e0;border-radius: 10px;background-color: #ffffff;width: 95%;}
-.preview-area {flex: 1.5; padding: 1rem;background-color: #f8f9fa;border-radius: 10px;border: 1px dashed #ccc;width: 95%;}
+.input-area {flex: 1;padding: 1rem;border: 1px solid #e0e0e0;border-radius: 10px;background-color: #ffffff;width: 1010px;}
+.preview-area {flex: 1.5; padding: 1rem;background-color: #f8f9fa;border-radius: 10px;border: 1px dashed #ccc;width: 1010px;}
 .preview-area h2 {font-size: 18px;font-weight: bold;margin-bottom: 20px}
-.form-group { margin-bottom: 20px; padding: 1rem 0 0.8rem; }
+.form-group { width: 100%; margin-bottom: 20px; padding: 1rem 0 0.8rem; }
 .form-group label { display: block; font-weight: bold; margin-bottom: 1rem; font-size: 18px; color: #333; }
-.form-group input[type="text"], .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 15px; box-sizing: border-box; }
+.form-group input[type="text"], .form-group textarea { width: 100%; overflow-x: scroll;overflow-y: scroll; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 15px; box-sizing: border-box; }
 .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #0056b3; box-shadow: 0 0 0 2px rgba(0,86,179,0.1); }
 
 /* 체크박스 스타일 */
