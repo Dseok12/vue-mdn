@@ -1,5 +1,5 @@
 <template>
-    <div class="page-component-list__item-wrap"v-if="post">
+    <div class="page-component-list__item-wrap" v-if="post">
         <div class="page-component-list__item">
             <div class="banner-list__item-img">
                 <a :href="post.imgUrl" target="_blank">
@@ -33,7 +33,6 @@
 <script>
 export default {
     name: 'PostPreview',
-    // 에디터에서 'post'라는 이름으로 데이터를 던져주면 여기서 받습니다.
     props: {
         post: {
             type: Object,
@@ -42,7 +41,7 @@ export default {
     },
     data() {
         return {
-            activeCodeSlideId: null,
+            activeCodeSlideId: null,   
         };
     },
     methods : {

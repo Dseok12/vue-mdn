@@ -34,4 +34,4 @@
 .codeArea__inner{background-color: #F8F8F8;border-radius: 0px 0px 5px 5px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease;border-top: 0px dashed #888;}
 .codeArea__inner--box{padding: 1.5rem 1rem;text-align: left;}
 .codeArea__inner--box > pre > .language-css{text-align: left;}
-.codeArea-is-open{display: block; max-height: 200px; overflow-y: scroll; border-top: 1px dashed #888;}
+.codeArea-is-open{display: block; max-height: 300px; overflow-y: scroll; overflow-x: scroll; border-top: 1px dashed #888;}
