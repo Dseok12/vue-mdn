@@ -32,11 +32,15 @@
                 </div>
 
                 <div class="form-group">
+                    <label>배너 이미지 등록</label>
+                    <input type="file" accept="image/*" @change="handleImageUpload">
+                </div>
+
+                <div class="form-group">
                     <label>노출 디바이스 (다중 선택)</label>
                     <div class="checkbox-group">
                         <label><input type="checkbox" value="PC" v-model="formData.deviceType"> PC</label>
                         <label><input type="checkbox" value="MO" v-model="formData.deviceType"> Mobile</label>
-                        <label><input type="checkbox" value="APP" v-model="formData.deviceType"> APP</label>
                     </div>
                 </div>
 
@@ -58,7 +62,7 @@
 
                 <div class="form-group">
                     <label>담당자</label>
-                    <input type="text" v-model="formData.manager" placeholder="예: 정원석 대리">
+                    <input type="text" v-model="formData.manager" placeholder="예: XXX 대리">
                 </div>
 
                 <div class="form-group">
@@ -78,7 +82,6 @@
 </template>
 
 <script>
-// CSS 임포트는 요청하신 대로 생략했습니다.
 import PostPreview from './Post.vue'; 
 import "../../css/pages/component/common.css";
 import "../../css/pages/posting/posting.css";
@@ -119,6 +122,26 @@ export default {
         },
         removeLabel(index) {
             this.formData.labels.splice(index, 1);
+        },
+        // ✨ 2. 이미지 업로드 처리 함수 추가
+        handleImageUpload(event) {
+            // 사용자가 선택한 파일 배열 중 첫 번째 파일을 가져옵니다.
+            const file = event.target.files[0]; 
+            
+            if (file) {
+                // FileReader 객체를 생성하여 파일을 비동기적으로 읽습니다.
+                const reader = new FileReader();
+                
+                // 파일 읽기가 완료되면 실행되는 콜백 함수입니다.
+                reader.onload = (e) => {
+                    // 읽어낸 Base64 형태의 이미지 문자열을 imgUrl 데이터에 덮어씌웁니다.
+                    // 데이터가 바뀌었으므로 오른쪽 미리보기 화면이 즉시 업데이트됩니다!
+                    this.formData.imgUrl = e.target.result;
+                };
+                
+                // 파일을 Data URL 형식으로 읽어들이라고 명령합니다.
+                reader.readAsDataURL(file);
+            }
         }
     }
 }
