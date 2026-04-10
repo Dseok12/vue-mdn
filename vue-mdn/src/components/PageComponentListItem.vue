@@ -20,6 +20,8 @@
                     <strong>담당자 : </strong><span>정원석 대리</span>
                 </div>
             </div>
+            <button class="page-component-btn page-component-btn__cancel-ok" @click="clickEdit">수정</button>
+            <button class="page-component-btn page-component-btn__cancel-no" @click="clickDelete">삭제</button>
         </div>
         <div class="page-component-list__item-code-area">
             <a href="javascript:;" @click.prevent="toggleCodeSlide(1)"><span>Css Code Style</span></a>
@@ -29,6 +31,7 @@
                 </div>
             </div>
         </div>
+
     </div>
     <!-- 추후 컴포넌트로 만들어서 props 연결 학습 예정 -->
 </template>
@@ -50,6 +53,19 @@ export default {
                 this.activeCodeSlideId = null;
             } else {
                 this.activeCodeSlideId = id;
+            }
+        },
+        // ✨ 수정 버튼 클릭 함수
+        clickEdit() {
+            // 부모 컴포넌트에게 'edit'이라는 이름의 이벤트와 현재 아이템 데이터를 올려보냅니다.
+            this.$emit('edit', this.item);
+        },
+        // ✨ 삭제 버튼 클릭 함수
+        clickDelete() {
+            // 실수로 삭제하는 것을 방지하기 위한 브라우저 기본 경고창(UX/보안)
+            if(confirm('정말 이 게시물을 삭제하시겠습니까?')) {
+                // 부모 컴포넌트에게 'delete'라는 이름의 이벤트와 삭제할 아이템의 고유 ID를 올려보냅니다.
+                this.$emit('delete', this.item.id);
             }
         }
     }
