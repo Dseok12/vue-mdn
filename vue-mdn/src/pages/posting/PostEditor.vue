@@ -30,12 +30,12 @@
                     <label>제목</label>
                     <input type="text" v-model="formData.title" placeholder="제목을 입력하세요">
                 </div>
-
+                <hr/>
                 <div class="form-group">
                     <label>배너 이미지 등록</label>
                     <input type="file" accept="image/*" @change="handleImageUpload">
                 </div>
-
+                <hr/>
                 <div class="form-group">
                     <label>노출 디바이스 (다중 선택)</label>
                     <div class="checkbox-group">
@@ -43,7 +43,7 @@
                         <label><input type="checkbox" value="MO" v-model="formData.deviceType"> Mobile</label>
                     </div>
                 </div>
-
+                <hr/>
                 <div class="form-group">
                     <label>라벨 (해시태그)</label>
                     <input 
@@ -59,17 +59,17 @@
                         </span>
                     </div>
                 </div>
-
+                <hr/>
                 <div class="form-group">
                     <label>담당자</label>
                     <input type="text" v-model="formData.manager" placeholder="예: XXX 대리">
                 </div>
-
+                <hr/>
                 <div class="form-group">
                     <label>CSS 코드</label>
                     <textarea v-model="formData.cssCode" rows="5" placeholder="CSS 코드를 입력하세요"></textarea>
                 </div>
-                
+                <hr/>
                 <button class="page-component-btn page-component-btn__add" @click="savePost">저장하기</button>
             </div>
 
