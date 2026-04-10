@@ -98,7 +98,7 @@ export default {
                 cssCode: '',
                 deviceType: ['PC', 'MO'], 
                 labels: ['배너', '이벤트'], 
-                imgUrl: 'https://via.placeholder.com/600x200.png?text=Preview+Banner+Image' 
+                imgUrl: 'https://placehold.co/600x800' 
             },
         };
     },
