@@ -1,50 +1,57 @@
 <template>
-    <div class="page-component__all">
-    <div class="page-component__top-wrap">
-        <div class="page-component__title-wrap">
-            <p class="page-component__sub-tit">컴포넌트</p>
-            <h2 class="page-component__main-tit">게시글 등록</h2>
+    <div class="page-component-list__item-wrap"v-if="post">
+        <div class="page-component-list__item">
+            <div class="banner-list__item-img">
+                <a :href="post.imgUrl" target="_blank">
+                    <img :src="post.imgUrl" alt="배너 이미지">
+                </a>
+            </div>
+            <div class="page-component-list__item-txt">
+                <h6 class="page-component-list__item-txt-title">
+                    {{ post.title || '제목을 입력해주세요' }}
+                </h6>
+                <div class="page-component-list__item-label-box">
+                    <span class="label label-device__type01" v-for="device in post.deviceType" :key="device">{{ device }}</span>
+                    <span class="label label-type01__color01" v-for="(label, index) in post.labels" :key="index">{{ label }}</span>
+                </div>
+                <div class="page-component-list__item-manager">
+                    <strong>담당자 : </strong><span>{{ post.manager || '담당자 미정' }}</span>
+                </div>
+            </div>
         </div>
-        <div class="page-component-btn-wrap">
-            <button class="page-component-btn page-component-btn__add" >등록</button>
-            <button class="page-component-btn page-component-btn__cancel" @click="fncGoBackPopUp" >취소</button>
+        <div class="page-component-list__item-code-area">
+            <a href="javascript:;" @click.prevent="toggleCodeSlide(1)"><span>Css Code Style</span></a>
+            <div class="codeArea__inner" :class="{ 'codeArea-is-open': activeCodeSlideId === 1 }">
+                <div class="codeArea__inner--box">
+                    <pre>{{ post.cssCode || 'CSS 코드가 없습니다.' }}</pre>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="go-back__popup on">
-        <p>내용은 저장 되지 않습니다. 취소하시겠습니까?</p>
-        <button class="page-component-btn page-component-btn__cancel-ok">확인</button>
-        <button class="page-component-btn page-component-btn__cancel-no">취소</button>
-    </div>
-    <div class="page-component-list__wrap">
-        <div class="page-component-list__box">
-            게시물 목록
-        </div>
-    </div>
     </div>
 </template>
 
 <script>
-import '../../css/pages/component/common.css';
-
 export default {
+    name: 'PostPreview',
+    // 에디터에서 'post'라는 이름으로 데이터를 던져주면 여기서 받습니다.
+    props: {
+        post: {
+            type: Object,
+            required: true
+        }
+    },
     data() {
         return {
-
+            activeCodeSlideId: null,
         };
     },
-    components : {
-        
-    },
     methods : {
-        fncGoBackPopUpOk(){
-            this.$router.go(-1);
-            return;
-        
-            const cancelBtn = document.querySelector('.page-component-btn__cancel');
-        },
-        fncGoBack(){
-            this.$router.go(-1);
-            return;
+        toggleCodeSlide(id) {
+            if (this.activeCodeSlideId === id) {
+                this.activeCodeSlideId = null;
+            } else {
+                this.activeCodeSlideId = id;
+            }
         }
     }
 }

@@ -1,3 +1,110 @@
+# 컴포넌트 아키텍처 계층도
+```bash
+📦 최상위 루트 (Root)
+└── 📄 App.vue (전체 레이아웃을 잡아주는 가장 큰 뼈대)
+    │
+    ├── 🧱 [고정 레이아웃] TopHeader.vue (상단 로고 및 메인 네비게이션)
+    ├── 🧱 [고정 레이아웃] LeftNav.vue (좌측 아코디언 서브 메뉴)
+    │
+    └── 🔀 <router-view> (URL 주소에 따라 화면이 갈아 끼워지는 마법의 도화지)
+        │
+        ├── 📁 [주소: /intro/*] 
+        │   ├── 📄 IntroSummary.vue (개요 페이지)
+        │   └── 📄 IntroDesignRule.vue (디자인 원칙 페이지)
+        │
+        ├── 📁 [주소: /style-guide/*]
+        │   └── 📄 DefaultPage.vue (스타일 가이드 공통 페이지 등)
+        │
+        ├── 📁 [주소: /component/*]
+        │   ├── 📄 Banner.vue (배너 컴포넌트 안내 페이지)
+        │   ├── 📄 Board.vue (게시판 안내 페이지)
+        │   ├── 📄 ProductList.vue (상품단 안내 페이지)
+        │   └── 📄 ... (그 외 Event, Popup 등 다수)
+        │
+        └── 📁 [주소: /posting/editor] 🌟 (최근 작업한 핵심 에디터)
+            └── 📄 PostEditor.vue (게시글 등록 폼 페이지 - 부모)
+                │
+                └── 🧱 Post.vue (실시간 미리보기 컴포넌트 - 자식)
+```
+
+---
+
+# 프로젝트 디렉토리 계층도
+
+```bash
+vue-mds/
+├── .gitignore
+├── index.html
+├── package-lock.json
+├── package.json
+├── README.md
+├── vite.config.js
+│
+└── src/
+    ├── App.vue
+    ├── main.js
+    ├── style.css
+    │
+    ├── assets/
+    │
+    ├── components/
+    │   ├── LeftNav.vue
+    │   ├── PageComponentList.vue  // (PageComponentLi... 복원)
+    │   └── TopHeader.vue
+    │
+    ├── css/
+    │   ├── base/
+    │   │   ├── base.css
+    │   │   ├── common.css
+    │   │   └── reset.css
+    │   ├── components/
+    │   │   ├── LeftNav.css
+    │   │   └── TopHeader.css
+    │   └── pages/
+    │       ├── component/
+    │       │   ├── banner.css
+    │       │   └── common.css
+    │       ├── posting/
+    │       │   └── posting.css
+    │       └── project/
+    │           ├── common.css
+    │           └── intro.css
+    │
+    ├── data/
+    │   └── LeftMenu.js
+    │
+    ├── pages/
+    │   ├── component/
+    │   │   ├── Banner.vue
+    │   │   ├── Board.vue
+    │   │   ├── Coupon.vue
+    │   │   ├── Event.vue
+    │   │   ├── Popup.vue
+    │   │   ├── ProductList.vue
+    │   │   ├── QuickMenu.vue
+    │   │   ├── Review.vue
+    │   │   ├── SpecialTeacherTab.vue  // (SpecialTeacherTa... 복원)
+    │   │   ├── TabMenu.vue
+    │   │   └── Video.vue
+    │   │
+    │   ├── posting/
+    │   │   ├── Post.vue
+    │   │   └── PostEditor.vue
+    │   │
+    │   ├── project/
+    │   │
+    │   ├── styleguide/
+    │   │
+    │   ├── DefaultPage.vue
+    │   ├── IntroDesignRule.vue
+    │   ├── IntroSummary.vue
+    │   └── NotFound.vue
+    │
+    └── routers/
+        └── router.js
+```
+---
+
 # 기본 설정
 ---
 ## 1. vite로 설정
