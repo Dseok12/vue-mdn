@@ -1,21 +1,33 @@
 /* 프로젝트 컴포넌트 css */
-.page-project__tit-box{margin-bottom: 4rem;}
-.page-project__sub-tit{display: flex;align-items: center;font-size: 1.5rem;font-weight: 400;margin-bottom: 0.5rem;}
-.page-project__tit{display: flex;font-size: 3rem;font-weight: 700;}
+.page-project__title-wrap{margin-bottom: 7%;}
+.page-project__sub-tit{font-size: 1.5rem;font-weight: 400;display: flex;align-items: center;margin-bottom: 0.5rem;}
+.page-project__main-tit{font-size: 3rem;font-weight: 700;display: flex;align-items: center;}
 
-.page-component__top-wrap{display: flex;align-items: flex-start;justify-content: space-between}
+.page-project-list__item-wrap{display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;  padding: 1.8rem; border: 1px solid #efefef; border-radius: 15px;gap: 5%;margin-bottom: 3%;}
+.page-project-list__item{display: flex; align-items: flex-start; justify-content: flex-start;  gap: 2%;margin-bottom: 2%;}
+.page-project-list__item .banner-list__item-img > a{display: block;}
 
+.page-project__top-wrap{display: flex;align-items: flex-start;justify-content: space-between}
 
+.thumbnail-container{  display: grid;grid-template-columns: repeat(4, 1fr);gap: 60px 35px;margin-bottom: 20px;}
+.thumbnail-card{width: 100%;border-radius: 8px;overflow: hidden;transition: transform 0.2s;background: #fff;}
+.thumbnail-img{ width: 100%;object-fit: cover;border-radius: 15px;}
+.thumbnail-img > img{ width: 100%;object-fit: cover;border-radius: 15px;}
+.thumbnail-title{ margin: 0 0 5% 0;font-size: 1.3rem;font-weight: bold;min-height: 3rem;}
+.tags-container{ display: flex;flex-wrap: wrap;gap: 6px;margin-bottom: 5%;}
+.thumbnail-content{padding: 5% 0 0 0;}
+.tag{background-color: #efefef;padding: 4px 8px;border-radius: 5px;font-size: 0.9rem;display: inline-block;}
+.thumbnail-date{font-size: 1.2rem;margin-bottom: 5%;}
+.projectLinks{display: flex;align-items: center;justify-content: center;}
+.projectLinks a{width: 20%; margin: 0 2%;}
+.projectLinks img{width: 100%;max-width: 60px;}
 
+.pagination{ display: flex;justify-content: center;align-items: center;gap: 10px;margin-top: 30px;padding: 20px 0;}
+.pagination button:disabled{background-color: #e9ecef;cursor: not-allowed;opacity: 0.6;}
+.pagination button.active{background-color: #339af0;color: #fff;border-color: #339af0;}
+.pagination button{padding: 8px 12px;border: 1px solid #dee2e6;background-color: #fff;color: #495057;border-radius: 4px;cursor: pointer;transition: all 0.2s;}
 
-
-
-
-
-
-
-
-
+.page-info{color: #6c757d;font-size: 0.9em;text-align: center;margin-top: 10px;}
 
 
 

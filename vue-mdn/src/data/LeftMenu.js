@@ -124,7 +124,7 @@ const LeftMenu = [
       },
       {
         id: "menu-project-02",
-        title: "메가패쓰",
+        title: "메가패스",
         path: "/project/mega-pass",
       },
       {

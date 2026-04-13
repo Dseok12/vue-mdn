@@ -55,12 +55,12 @@ export default {
                 this.activeCodeSlideId = id;
             }
         },
-        // ✨ 수정 버튼 클릭 함수
+        // 수정 버튼 클릭 함수
         clickEdit() {
             // 부모 컴포넌트에게 'edit'이라는 이름의 이벤트와 현재 아이템 데이터를 올려보냅니다.
             this.$emit('edit', this.item);
         },
-        // ✨ 삭제 버튼 클릭 함수
+        // 삭제 버튼 클릭 함수
         clickDelete() {
             // 실수로 삭제하는 것을 방지하기 위한 브라우저 기본 경고창(UX/보안)
             if(confirm('정말 이 게시물을 삭제하시겠습니까?')) {
