@@ -123,6 +123,7 @@ export default {
             isPopupOn: false, 
             newLabel: '',
             
+            // :post="formData"에서 formData 객체를 PostPreView컴포넌트로 props를 넘깁니다. 그 props의 이름은 post입니다.
             formData: {
                 title: '',
                 manager: '',

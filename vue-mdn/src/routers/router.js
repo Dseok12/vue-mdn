@@ -87,7 +87,7 @@ const routes = [
   { path: '/project/examschool', component: SatGpa },
   { path: '/project/univexam', component: UnivExam },
   { path: '/project/examhighscool', component: CollegeInfo },
-  { path: '/project/eventromotion', component: DefaultPage },
+  { path: '/project/eventpromotion', component: DefaultPage },
   { path: '/project/emarket', component: OnlineBookstore },
   { path: '/project/megacampaign', component: MegaCampaign },
 

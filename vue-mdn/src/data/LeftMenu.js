@@ -125,7 +125,7 @@ const LeftMenu = [
       {
         id: "menu-project-02",
         title: "메가패스",
-        path: "/project/mega-pass",
+        path: "/project/megapass",
       },
       {
         id: "menu-project-03",
@@ -135,7 +135,7 @@ const LeftMenu = [
       {
         id: "menu-project-04",
         title: "대학별고사",
-        path: "/project/univ-exam",
+        path: "/project/univexam",
       },
       {
         id: "menu-project-05",
