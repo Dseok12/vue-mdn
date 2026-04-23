@@ -110,7 +110,7 @@
 </template>
 
 <script>
-import PostPreview from './Post.vue'; 
+import PostPreview from './PostPreView.vue'; 
 import "../../css/pages/component/common.css";
 import "../../css/pages/posting/posting.css";
 
