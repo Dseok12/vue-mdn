@@ -24,9 +24,29 @@
                     <strong>담당자 : </strong><span>{{ item.manager }}</span>
                 </div>
                 <ul class="page-component-list__item-link">
-                    <li><span>프로젝트 게시판:</span> <a :href="item.MegaProjectLink"  target="_blank">{{ item.MegaProjectLink }}</a></li>
-                    <li><span>PC 링크:</span> <a :href="item.PcLink"  target="_blank">{{ item.PcLink }}</a></li>
-                    <li><span>MOBILE 링크:</span> <a :href="item.MoLink"  target="_blank">{{ item.MoLink }}</a></li>
+                    <li>
+                        <span>프로젝트 게시판:</span>
+                        <a v-if="item.MegaProjectLink" :href="item.MegaProjectLink" target="_blank">
+                            {{ item.MegaProjectLink }}
+                        </a>
+                        <p v-else>링크가 없습니다.</p>
+                    </li>
+
+                    <li>
+                        <span>PC 링크:</span>
+                        <a v-if="item.PcLink" :href="item.PcLink" target="_blank">
+                            {{ item.PcLink }}
+                        </a>
+                        <p v-else>링크가 없습니다.</p>
+                    </li>
+
+                    <li>
+                        <span>MOBILE 링크:</span>
+                        <a v-if="item.MoLink" :href="item.MoLink" target="_blank">
+                            {{ item.MoLink }}
+                        </a>
+                        <p v-else>링크가 없습니다.</p>
+                    </li>
                 </ul>
             </div>
             
