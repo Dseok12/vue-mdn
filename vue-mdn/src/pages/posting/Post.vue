@@ -17,6 +17,11 @@
                 <div class="page-component-list__item-manager">
                     <strong>담당자 : </strong><span>{{ post.manager || '담당자 미정' }}</span>
                 </div>
+                <ul class="page-component-list__item-link">
+                    <li><span>프로젝트 게시판:</span> <a :href="post.MegaProjectLink" target="_blank">{{ post.MegaProjectLink }}</a></li>
+                    <li><span>PC 링크:</span> <a :href="post.PcLink" target="_blank">{{ post.PcLink }}</a></li>
+                    <li><span>MOBILE 링크:</span> <a :href="post.MoLink" target="_blank">{{ post.MoLink }}</a></li>
+                </ul>
             </div>
         </div>
         <div class="page-component-list__item-code-area">

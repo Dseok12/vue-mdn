@@ -61,6 +61,34 @@
                 </div>
                 <hr/>
                 <div class="form-group">
+                    <label>링크</label>
+                    <div class="link-box">
+                        <span>프로젝트게시판: </span>
+                        <input 
+                            type="text" 
+                            v-model="formData.MegaProjectLink" 
+                            placeholder="해당 프로젝트 게시판 링크를 입력하세요."
+                        >
+                    </div>
+                    <div class="link-box">
+                        <span>PC 링크: </span>
+                        <input 
+                            type="text" 
+                            v-model="formData.PcLink" 
+                            placeholder="백업된 next 링크를 입력하세요."
+                        >
+                    </div>
+                    <div class="link-box">
+                        <span>MOBILE 링크: </span>
+                        <input 
+                            type="text" 
+                            v-model="formData.MoLink" 
+                            placeholder="백업된 next 링크를 입력하세요."
+                        >
+                    </div>
+                </div>
+                <hr/>
+                <div class="form-group">
                     <label>담당자</label>
                     <input type="text" v-model="formData.manager" placeholder="예: XXX 대리">
                 </div>
@@ -101,6 +129,9 @@ export default {
                 cssCode: '',
                 deviceType: ['PC', 'MO'], 
                 labels: ['배너', '이벤트'], 
+                MegaProjectLink: '', 
+                PcLink: '', 
+                MoLink: '', 
                 imgUrl: 'https://placehold.co/600x800' 
             },
         };
@@ -110,8 +141,31 @@ export default {
             this.$router.go(-1);
         },
         savePost() {
-            console.log('서버로 전송할 완벽한 데이터 세트:', this.formData);
+            // 1. 주소창에서 꼬리표(카테고리)를 확인합니다. (없으면 기본값 'common')
+            const category = this.$route.query.category || 'common';
+
+            // 2. 창고에 저장할 완벽한 데이터 한 덩어리를 만듭니다.
+            const newPost = {
+                ...this.formData,          // 입력한 폼 데이터 전체 복사
+                id: Date.now(),            // ✨ 절대 겹치지 않는 고유 ID (현재 시간 밀리초) 부여
+                category: category,        // 어떤 페이지 소속인지 기록
+                date: new Date().toISOString().split('T')[0] // 오늘 날짜 기록
+            };
+
+            // 3. 로컬 스토리지(가짜 DB)에서 기존 게시물들을 싹 가져옵니다.
+            // 만약 한 번도 쓴 적이 없으면 빈 배열 []을 준비합니다.
+            const existingPosts = JSON.parse(localStorage.getItem('megaDbPosts')) || [];
+
+            // 4. 기존 게시물 목록 맨 앞에 방금 쓴 새 글을 끼워 넣습니다.
+            existingPosts.unshift(newPost);
+
+            // 5. 다시 로컬 스토리지에 문자열(JSON)로 포장해서 덮어씌웁니다.
+            localStorage.setItem('megaDbPosts', JSON.stringify(existingPosts));
+
             alert('게시글이 성공적으로 등록되었습니다!');
+
+            // 6. 글을 다 썼으니, 꼬리표를 보고 원래 있던 페이지로 돌아갑니다.
+            this.$router.push(`/component/${category}`);
         },
         addLabel() {
             const trimmedLabel = this.newLabel.trim(); 

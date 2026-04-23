@@ -14,39 +14,39 @@ const LeftMenu = [
       {
         id: "menu-intro-02",
         title: "디자인 원칙",
-        path: "/intro/design-rule",
+        path: "/intro/designrule",
       },
     ],
   },
   {
     id: "menu-style-guide",
     title: "스타일 가이드",
-    path: "/style-guide/logo",
+    path: "/styleguide/logo",
     children: [
       {
         id: "menu-style-guide-01",
         title: "로고",
-        path: "/style-guide/logo",
+        path: "/styleguide/logo",
       },
       {
         id: "menu-style-guide-02",
         title: "색상",
-        path: "/style-guide/color",
+        path: "/styleguide/color",
       },
       {
         id: "menu-style-guide-03",
         title: "서체",
-        path: "/style-guide/font",
+        path: "/styleguide/font",
       },
       {
         id: "menu-style-guide-04",
         title: "레이아웃",
-        path: "/style-guide/layout",
+        path: "/styleguide/layout",
       },
       {
         id: "menu-style-guide-05",
         title: "아이콘",
-        path: "/style-guide/icon",
+        path: "/styleguide/icon",
       },
     ],
   },
@@ -63,7 +63,7 @@ const LeftMenu = [
       {
         id: "menu-component-02",
         title: "퀵메뉴",
-        path: "/component/quick-menu",
+        path: "/component/quickmenu",
       },
       {
         id: "menu-component-03",
@@ -73,7 +73,7 @@ const LeftMenu = [
       {
         id: "menu-component-04",
         title: "탭메뉴",
-        path: "/component/tab-menu",
+        path: "/component/tabmenu",
       },
       {
         id: "menu-component-05",
@@ -88,7 +88,7 @@ const LeftMenu = [
       {
         id: "menu-component-07",
         title: "기획전 선생님 탭메뉴",
-        path: "/component/special-teacher-tab",
+        path: "/component/specialteachertab",
       },
       {
         id: "menu-component-08",
@@ -108,7 +108,7 @@ const LeftMenu = [
       {
         id: "menu-component-11",
         title: "상품단",
-        path: "/component/product-list",
+        path: "/component/productlist",
       },
     ],
   },
@@ -120,7 +120,7 @@ const LeftMenu = [
       {
         id: "menu-project-01",
         title: "메가선생님",
-        path: "/project/mega-teacher",
+        path: "/project/megateacher",
       },
       {
         id: "menu-project-02",
@@ -130,7 +130,7 @@ const LeftMenu = [
       {
         id: "menu-project-03",
         title: "수능·내신",
-        path: "/project/exam-school",
+        path: "/project/examschool",
       },
       {
         id: "menu-project-04",
@@ -140,22 +140,22 @@ const LeftMenu = [
       {
         id: "menu-project-05",
         title: "입시정보",
-        path: "/project/exam-highscool",
+        path: "/project/examhighscool",
       },
       {
         id: "menu-project-06",
         title: "이벤트ㆍ프로모션",
-        path: "/project/event-promotion",
+        path: "/project/eventpromotion",
       },
       {
         id: "menu-project-07",
         title: "온라인서점",
-        path: "/project/e-market",
+        path: "/project/emarket",
       },
       {
         id: "menu-project-08",
         title: "메가캠페인",
-        path: "/project/mega-campaign",
+        path: "/project/megacampaign",
       },
     ],
   },

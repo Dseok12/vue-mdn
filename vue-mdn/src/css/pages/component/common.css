@@ -1,18 +1,22 @@
 /* 페이지 컴포넌트 common */
+button:hover{text-decoration: underline;}
 .page-component__all{position: relative;}
 .page-component__title-wrap{margin-bottom: 7%;}
 .page-component__sub-tit{font-size: 1.5rem;font-weight: 400;display: flex;align-items: center;margin-bottom: 0.5rem;}
 .page-component__main-tit{font-size: 3rem;font-weight: 700;display: flex;align-items: center;}
 
+.page-component__top-wrap{display: flex;align-items: center;justify-content: space-between;}
+
 .page-component-list__item-wrap{display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;  padding: 1.8rem; border: 1px solid #efefef; border-radius: 15px;gap: 5%;margin-bottom: 3%;}
-.page-component-list__item{display: flex; align-items: flex-start; justify-content: flex-start;  gap: 2%;margin-bottom: 2%;}
+.page-component-list__item{display: flex; align-items: center; justify-content: space-between;  gap: 2%;margin-bottom: 2%;width: 100%;}
 .page-component-list__item .banner-list__item-img > a{display: block;}
 .page-component-list__item:hover .banner-list__item-img > a > img{transition: all 0.3s;transform: scale(1.1);}
-.banner-list__item-img{width: 15%;height: 100%; position: relative; overflow: hidden;border-radius: 15px; object-fit: cover;}
+.banner-list__item-img{width: 12%;height: 100%; position: relative; overflow: hidden;border-radius: 15px; object-fit: cover;}
 .banner-list__item-img > a > img{width: 100%;height: 100%;object-fit: cover;}
+.page-component__add-post__btn{display: block;background-color: #e1e1e1;color: #222;padding: 10px 20px;border-radius: 10px;}
+.page-component__add-post__btn:hover{text-decoration: underline;}
 
-
-.page-component-list__item-txt{display: flex; justify-content: flex-start; gap: 1rem; flex-direction: column; width: 80%;}
+.page-component-list__item-txt{display: flex; justify-content: flex-start; gap: 1rem; flex-direction: column;width: 80%;}
 .page-component-list__item-txt-title{font-size: 1.2rem;font-weight: 700;}
 .page-component-list__item-label-box{display: flex;align-items: center; justify-content: flex-start;gap: 0.5rem;}
 .label{display: inline-block; padding: 0.5rem 0.8rem;border-radius: 10px;font-size: 0.8rem;}
@@ -33,5 +37,6 @@
 .page-component-list__item-code-area > a > span::after{content: "▼";font-size: 0.8rem; position: absolute;right: -18%;top: 50%;transform: translateY(-50%);}
 .codeArea__inner{background-color: #F8F8F8;border-radius: 0px 0px 5px 5px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease;border-top: 0px dashed #888;}
 .codeArea__inner--box{padding: 1.5rem 1rem;text-align: left;}
+.codeArea__inner--box > pre{width: 1200px;}
 .codeArea__inner--box > pre > .language-css{text-align: left;}
 .codeArea-is-open{display: block; max-height: 300px; overflow-y: scroll; overflow-x: scroll; border-top: 1px dashed #888;}

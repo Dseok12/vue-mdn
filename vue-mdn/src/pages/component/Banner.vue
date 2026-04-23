@@ -6,183 +6,24 @@
                 <h2 class="page-component__main-tit">배너</h2>
             </div>
             <div class="page-component-btn-wrap">
-                <router-link to="../posting/post" class="page-component__add-post__btn" >게시글 등록</router-link>
+                <router-link to="/posting/post?category=banner" class="page-component__add-post__btn">게시글 등록</router-link>
             </div>
         </div>
+
         <div class="page-component-list__wrap">
             <div class="page-component-list__box">
-                <PageComponentListItem/>
-                <!-- 추후 컴포넌트로 만들어서 props 연결 학습 예정 -->
-                <div class="page-component-list__item-wrap">
-                    <div class="page-component-list__item">
-                        <div class="banner-list__item-img">
-                            <a href="/src/assets/img/event_240916_32778.png" target="_blank">
-                                <img src="../../assets/img/event_240916_32778.png" alt="">
-                            </a>
-                        </div>
-                        <div class="page-component-list__item-txt">
-                            <h6 class="page-component-list__item-txt-title">PC 사이트 메인 페이지 배너 가이드 (아이템 1)</h6>
-                            <div class="page-component-list__item-label-box">
-                                <span class="label label-device__type01">PC</span>
-                                <span class="label label-device__type02">MO</span>
-                                <span class="label label-type01__color01">배너</span>
-                                <span class="label label-type01__color01">배너</span>
-                                <span class="label label-type01__color01">배너</span>
-                            </div>
-                            <div class="page-component-list__item-manager">
-                                <strong>담당자 : </strong><span>정원석 대리</span>
-                            </div>
-                        </div>
-                        <button class="page-component-btn page-component-btn__cancel-ok" @click="clickEdit">수정</button>
-                        <button class="page-component-btn page-component-btn__cancel-no" @click="clickDelete">삭제</button>
-                    </div>
-                    <div class="page-component-list__item-code-area">
-                        <a href="javascript:;" @click.prevent="toggleCodeSlide(1)"><span>Css Code Style</span></a>
-                        <div class="codeArea__inner" :class="{ 'codeArea-is-open': activeCodeSlideId === 1 }">
-                            <div class="codeArea__inner--box">
-                                <pre>.banner-style-1 { ... }</pre>
-                            </div>
-                        </div>
-                    </div>
+                
+                <PageComponentListItem 
+                    v-for="post in bannerPosts" 
+                    :key="post.id" 
+                    :item="post" 
+                    @delete="handleDelete"
+                />
+
+                <div v-if="bannerPosts.length === 0" style="padding: 80px 0; text-align: center; color: #888; font-size: 1.2rem; background: #f8f9fa; border-radius: 10px;">
+                    등록된 배너 게시물이 없습니다. <br/>우측 상단의 '게시글 등록' 버튼을 눌러 첫 게시물을 작성해 보세요!
                 </div>
-                <!-- 추후 컴포넌트로 만들어서 props 연결 학습 예정 -->
-                <!-- 추후 컴포넌트로 만들어서 props 연결 학습 예정 -->
-                <div class="page-component-list__item-wrap">
-                    <div class="page-component-list__item">
-                        <div class="banner-list__item-img">
-                            <a href="/src/assets/img/event_240916_32778.png" target="_blank">
-                                <img src="../../assets/img/event_240916_32778.png" alt="">
-                            </a>
-                        </div>
-                        <div class="page-component-list__item-txt">
-                            <h6 class="page-component-list__item-txt-title">PC 사이트 메인 페이지 배너 가이드 (아이템 2)</h6>
-                            <div class="page-component-list__item-label-box">
-                                <span class="label label-device__type01">PC</span>
-                                <span class="label label-device__type02">MO</span>
-                                <span class="label label-type01__color01">배너</span>
-                                <span class="label label-type01__color01">배너</span>
-                                <span class="label label-type01__color01">배너</span>
-                            </div>
-                            <div class="page-component-list__item-manager">
-                                <strong>담당자 : </strong><span>정원석 대리</span>
-                            </div>
-                        </div>
-                        <button class="page-component-btn page-component-btn__cancel-ok" @click="clickEdit">수정</button>
-                        <button class="page-component-btn page-component-btn__cancel-no" @click="clickDelete">삭제</button>
-                    </div>
-                    <div class="page-component-list__item-code-area">
-                        <a href="javascript:;" @click.prevent="toggleCodeSlide(2)"><span>Css Code Style</span></a>
-                        <div class="codeArea__inner" :class="{ 'codeArea-is-open': activeCodeSlideId === 2 }">
-                            <div class="codeArea__inner--box">
-                                <pre>.banner-style-2 { ... }</pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 추후 컴포넌트로 만들어서 props 연결 학습 예정 -->
-                <!-- 추후 컴포넌트로 만들어서 props 연결 학습 예정 -->
-                <div class="page-component-list__item-wrap">
-                    <div class="page-component-list__item">
-                        <div class="banner-list__item-img">
-                            <a href="/src/assets/img/event_240916_32778.png" target="_blank">
-                                <img src="../../assets/img/event_240916_32778.png" alt="">
-                            </a>
-                        </div>
-                        <div class="page-component-list__item-txt">
-                            <h6 class="page-component-list__item-txt-title">PC 사이트 메인 페이지 배너 가이드 (아이템 3)</h6>
-                            <div class="page-component-list__item-label-box">
-                                <span class="label label-device__type01">PC</span>
-                                <span class="label label-device__type02">MO</span>
-                                <span class="label label-type01__color01">배너</span>
-                                <span class="label label-type01__color01">배너</span>
-                                <span class="label label-type01__color01">배너</span>
-                            </div>
-                            <div class="page-component-list__item-manager">
-                                <strong>담당자 : </strong><span>정원석 대리</span>
-                            </div>
-                        </div>
-                        <button class="page-component-btn page-component-btn__cancel-ok" @click="clickEdit">수정</button>
-                        <button class="page-component-btn page-component-btn__cancel-no" @click="clickDelete">삭제</button>
-                    </div>
-                    <div class="page-component-list__item-code-area">
-                        <a href="javascript:;" @click.prevent="toggleCodeSlide(3)"><span>Css Code Style</span></a>
-                        <div class="codeArea__inner" :class="{ 'codeArea-is-open': activeCodeSlideId === 3 }">
-                            <div class="codeArea__inner--box">
-                                <pre>.banner-style-3 { ... }</pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 추후 컴포넌트로 만들어서 props 연결 학습 예정 -->
-                <!-- 추후 컴포넌트로 만들어서 props 연결 학습 예정 -->
-                <div class="page-component-list__item-wrap">
-                    <div class="page-component-list__item">
-                        <div class="banner-list__item-img">
-                            <a href="/src/assets/img/event_240916_32778.png" target="_blank">
-                                <img src="../../assets/img/event_240916_32778.png" alt="">
-                            </a>
-                        </div>
-                        <div class="page-component-list__item-txt">
-                            <h6 class="page-component-list__item-txt-title">PC 사이트 메인 페이지 배너 가이드 (아이템 4)</h6>
-                            <div class="page-component-list__item-label-box">
-                                <span class="label label-device__type01">PC</span>
-                                <span class="label label-device__type02">MO</span>
-                                <span class="label label-type01__color01">배너</span>
-                                <span class="label label-type01__color01">배너</span>
-                                <span class="label label-type01__color01">배너</span>
-                            </div>
-                            <div class="page-component-list__item-manager">
-                                <strong>담당자 : </strong><span>정원석 대리</span>
-                            </div>
-                        </div>
-                        <button class="page-component-btn page-component-btn__cancel-ok" @click="clickEdit">수정</button>
-                        <button class="page-component-btn page-component-btn__cancel-no" @click="clickDelete">삭제</button>
-                    </div>
-                    <div class="page-component-list__item-code-area">
-                        <a href="javascript:;" @click.prevent="toggleCodeSlide(4)"><span>Css Code Style</span></a>
-                        <div class="codeArea__inner" :class="{ 'codeArea-is-open': activeCodeSlideId === 4 }">
-                            <div class="codeArea__inner--box">
-                                <pre>.banner-style-4 { ... }</pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 추후 컴포넌트로 만들어서 props 연결 학습 예정 -->
-                <!-- 추후 컴포넌트로 만들어서 props 연결 학습 예정 -->
-                <div class="page-component-list__item-wrap">
-                    <div class="page-component-list__item">
-                        <div class="banner-list__item-img">
-                            <a href="/src/assets/img/event_240916_32778.png" target="_blank">
-                                <img src="../../assets/img/event_240916_32778.png" alt="">
-                            </a>
-                        </div>
-                        <div class="page-component-list__item-txt">
-                            <h6 class="page-component-list__item-txt-title">PC 사이트 메인 페이지 배너 가이드 (아이템 5)</h6>
-                            <div class="page-component-list__item-label-box">
-                                <span class="label label-device__type01">PC</span>
-                                <span class="label label-device__type02">MO</span>
-                                <span class="label label-type01__color01">배너</span>
-                                <span class="label label-type01__color01">배너</span>
-                                <span class="label label-type01__color01">배너</span>
-                            </div>
-                            <div class="page-component-list__item-manager">
-                                <strong>담당자 : </strong><span>정원석 대리</span>
-                            </div>
-                        </div>
-                        <button class="page-component-btn page-component-btn__cancel-ok" @click="clickEdit">수정</button>
-                        <button class="page-component-btn page-component-btn__cancel-no" @click="clickDelete">삭제</button>
-                    </div>
-                    <div class="page-component-list__item-code-area">
-                        <a href="javascript:;" @click.prevent="toggleCodeSlide(5)"><span>Css Code Style</span></a>
-                        <div class="codeArea__inner" :class="{ 'codeArea-is-open': activeCodeSlideId === 5 }">
-                            <div class="codeArea__inner--box">
-                                <pre>.banner-style-5 { ... }</pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 추후 컴포넌트로 만들어서 props 연결 학습 예정 -->
-                <!-- 추후 컴포넌트로 만들어서 props 연결 학습 예정 -->
+
             </div>
         </div>
     </div>
@@ -191,40 +32,43 @@
 <script>
 import '../../css/pages/component/common.css';
 import '../../css/pages/component/banner.css';
+// 💡 아까 만든 리스트 아이템 컴포넌트를 불러옵니다!
 import PageComponentListItem from '../../components/PageComponentListItem.vue';
 
 export default {
-    data() {
-        return {
-            // 초기값 null은 아무것도 열리지 않은 상태입니다.
-            activeCodeSlideId: null,   
-        };
-    },
-    components : {
+    components: {
         PageComponentListItem
     },
+    data() {
+        return {
+            // 이 배열에 배너용 데이터만 담깁니다.
+            bannerPosts: [] 
+        };
+    },
+    // 화면이 켜지자마자 로컬 스토리지에서 데이터를 읽어오는 함수를 실행합니다.
+    mounted() {
+        this.loadPosts();
+    },
     methods : {
-        toggleCodeSlide(id) {
-            // 1. 이미 열려있는 항목을 다시 누르면 닫습니다. (null 처리)
-            // 2. 다른 항목을 누르면 해당 항목의 ID로 교체합니다. (그 항목만 열림)
-            if (this.activeCodeSlideId === id) {
-                this.activeCodeSlideId = null;
-            } else {
-                this.activeCodeSlideId = id;
-            }
+        loadPosts() {
+            // 1. 창고에서 전체 데이터를 꺼내옵니다.
+            const allPosts = JSON.parse(localStorage.getItem('megaDbPosts')) || [];
+            
+            // 2. 그 중에서 category가 'banner'인 녀석들만 남겨서(filter) 내 배열에 넣습니다.
+            // 데이터가 내 배열에 들어오는 순간, Vue가 알아서 화면에 카드들을 그려냅니다!
+            this.bannerPosts = allPosts.filter(post => post.category === 'banner');
         },
-        // ✨ 수정 버튼 클릭 함수
-        clickEdit() {
-            // 부모 컴포넌트에게 'edit'이라는 이름의 이벤트와 현재 아이템 데이터를 올려보냅니다.
-            this.$emit('edit', this.item);
-        },
-        // ✨ 삭제 버튼 클릭 함수
-        clickDelete() {
-            // 실수로 삭제하는 것을 방지하기 위한 브라우저 기본 경고창(UX/보안)
-            if(confirm('정말 이 게시물을 삭제하시겠습니까?')) {
-                // 부모 컴포넌트에게 'delete'라는 이름의 이벤트와 삭제할 아이템의 고유 ID를 올려보냅니다.
-                this.$emit('delete', this.item.id);
-            }
+        
+        // 💡 자식 컴포넌트에서 '삭제' 버튼을 눌렀을 때 실행되는 함수
+        handleDelete(deleteId) {
+            let allPosts = JSON.parse(localStorage.getItem('megaDbPosts')) || [];
+            
+            // 삭제하려는 ID와 다른 것들만 살려서 다시 저장합니다. (즉, 해당 ID만 삭제됨)
+            allPosts = allPosts.filter(post => post.id !== deleteId);
+            localStorage.setItem('megaDbPosts', JSON.stringify(allPosts));
+            
+            alert('삭제되었습니다.');
+            this.loadPosts(); // 목록을 다시 불러와 화면을 최신화합니다.
         }
     }
 }

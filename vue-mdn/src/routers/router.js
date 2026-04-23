@@ -45,7 +45,7 @@ const routes = [
 
   // 2. 소개 (Intro)
   { path: '/intro/summary', component: IntroSummary },
-  { path: '/intro/design-rule', component: IntroDesignRule },
+  { path: '/intro/designrule', component: IntroDesignRule },
 
   // 3. 스타일 가이드 (Style Guide)
   { path: '/style-guide/logo', component: DefaultPage },
@@ -56,50 +56,50 @@ const routes = [
 
   // 4. 컴포넌트 (Component)
   { path: '/component/banner', component: Banner },
-  { path: '/component/quick-menu', component: QuickMenu },
+  { path: '/component/quickmenu', component: QuickMenu },
   { path: '/component/board', component: Board },
-  { path: '/component/tab-menu', component: TabMenu },
+  { path: '/component/tabmenu', component: TabMenu },
   { path: '/component/review', component: Review },
   { path: '/component/event', component: Event },
-  { path: '/component/special-teacher-tab', component: SpecialTeacherTab },
+  { path: '/component/specialteachertab', component: SpecialTeacherTab },
   { path: '/component/video', component: Video },
   { path: '/component/popup', component: Popup },
   { path: '/component/coupon', component: Coupon },
-  { path: '/component/product-list', component: ProductList },
+  { path: '/component/productlist', component: ProductList },
 
   // 4-1. 컴포넌트 - 게시물아이템 (Component)
   { path: '/component/banner/:megarandom', component: DefaultPage },
-  { path: '/component/quick-menu/:megarandom', component: DefaultPage },
+  { path: '/component/quickmenu/:megarandom', component: DefaultPage },
   { path: '/component/board/:megarandom', component: DefaultPage },
-  { path: '/component/tab-menu/:megarandom', component: DefaultPage },
+  { path: '/component/tabmenu/:megarandom', component: DefaultPage },
   { path: '/component/review/:megarandom', component: DefaultPage },
   { path: '/component/event/:megarandom', component: DefaultPage },
-  { path: '/component/special-teacher-tab/:megarandom', component: DefaultPage },
+  { path: '/component/specialteachertab/:megarandom', component: DefaultPage },
   // 💡 교정: vmegarandomeo 라는 오타를 video로 바로잡았습니다!
   { path: '/component/video/:megarandom', component: DefaultPage }, 
   { path: '/component/popup/:megarandom', component: DefaultPage },
   { path: '/component/coupon/:megarandom', component: DefaultPage },
-  { path: '/component/product-list/:megarandom', component: DefaultPage },
+  { path: '/component/productlist/:megarandom', component: DefaultPage },
 
   // 5. 프로젝트 (Project)
-  { path: '/project/mega-teacher', component: MegaTeacher },
-  { path: '/project/mega-pass', component: MegaPass },
-  { path: '/project/exam-school', component: SatGpa },
-  { path: '/project/univ-exam', component: UnivExam },
-  { path: '/project/exam-highscool', component: CollegeInfo },
-  { path: '/project/event-promotion', component: DefaultPage },
-  { path: '/project/e-market', component: OnlineBookstore },
-  { path: '/project/mega-campaign', component: MegaCampaign },
+  { path: '/project/megateacher', component: MegaTeacher },
+  { path: '/project/megapass', component: MegaPass },
+  { path: '/project/examschool', component: SatGpa },
+  { path: '/project/univexam', component: UnivExam },
+  { path: '/project/examhighscool', component: CollegeInfo },
+  { path: '/project/eventromotion', component: DefaultPage },
+  { path: '/project/emarket', component: OnlineBookstore },
+  { path: '/project/megacampaign', component: MegaCampaign },
 
   // 5-1. 프로젝트 - 게시물아이템 (Project)
-  { path: '/project/mega-teacher/:id', component: DefaultPage },
-  { path: '/project/mega-pass/:id', component: DefaultPage },
-  { path: '/project/exam-school/:id', component: DefaultPage },
-  { path: '/project/univ-exam/:id', component: DefaultPage },
-  { path: '/project/exam-highscool/:id', component: DefaultPage },
-  { path: '/project/event-promotion/:id', component: DefaultPage },
-  { path: '/project/e-market/:id', component: DefaultPage },
-  { path: '/project/mega-campaign/:id', component: DefaultPage },
+  { path: '/project/megateacher/:id', component: DefaultPage },
+  { path: '/project/megapass/:id', component: DefaultPage },
+  { path: '/project/examschool/:id', component: DefaultPage },
+  { path: '/project/univexam/:id', component: DefaultPage },
+  { path: '/project/examhighscool/:id', component: DefaultPage },
+  { path: '/project/eventpromotion/:id', component: DefaultPage },
+  { path: '/project/emarket/:id', component: DefaultPage },
+  { path: '/project/megacampaign/:id', component: DefaultPage },
 
   // 💡 핵심 교정: 여기서도 Post 가 아니라 PostEditor 를 연결합니다!
   { path: '/posting/post', component: PostEditor },

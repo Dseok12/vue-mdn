@@ -1,5 +1,5 @@
 /* 게시물 스타일 */
-.go-back__popup-wrap{position: absolute;left: 0;top: 0;width: 100%;height: 100%;background-color: rgba(0, 0, 0, 0.05);display: flex;align-items: center;justify-content: center;z-index: 10;}
+.go-back__popup-wrap{position: fixed;left: 0;top: 0;width: 100%;height: 100%;background-color: rgba(0, 0, 0, 0.05);display: flex;align-items: center;justify-content: center;z-index: 10;}
 .go-back__popup{width: 50%;text-align: center;border-radius: 10px;background-color: #fff; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);padding: 1.5rem;}
 .go-back__popup > p{font-size: 1.3rem;font-weight: bold;margin-bottom: 2rem;line-height: 1.3;}
 .page-component-btn-wrap{display: flex;align-items: center;justify-content: center;gap: 0.7rem;}
@@ -30,6 +30,14 @@
 .tag-item { display: inline-flex; align-items: center; background-color: #e2e8f0; color: #334155; padding: 5px 12px; border-radius: 20px; font-size: 14px; font-weight: bold; }
 .btn-tag-delete { background: none; border: none; color: #64748b; margin-left: 6px; cursor: pointer; font-size: 12px; padding: 0 2px; }
 .btn-tag-delete:hover { color: #ef4444; }
+
+.link-box{margin-bottom: 20px;}
+.link-box > span{display: block; font-size: 18px;margin-bottom: 10px;}
+
+.page-component-list__item-link{}
+.page-component-list__item-link > li{margin-bottom: 20px;}
+.page-component-list__item-link > li > span{display: block;margin-bottom: 10px; font-weight: 700;}
+.page-component-list__item-link > li > a{display: block; width: 80%;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
 
 .page-component-list__item-wrap{background-color: #fff;}
 .page-component-list__item .banner-list__item-img > a{display: block;}
