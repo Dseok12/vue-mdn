@@ -37,7 +37,7 @@
 .page-component-list__item-link{}
 .page-component-list__item-link > li{margin-bottom: 20px;}
 .page-component-list__item-link > li > span{display: block;margin-bottom: 10px; font-weight: 700;}
-.page-component-list__item-link > li > a{display: block; width: 80%;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.page-component-list__item-link > li > a{display: block; width: 80%;height: 1.35rem;line-height: 1.35rem; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
 
 .page-component-list__item-wrap{background-color: #fff;}
 .page-component-list__item .banner-list__item-img > a{display: block;}
