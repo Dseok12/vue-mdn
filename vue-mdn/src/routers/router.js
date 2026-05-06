@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory,createWebHashHistory } from 'vue-router';
 
 // 변수 대신 vite.config.js에 설정해둔 Alias(@pages)를 활용한 경로 설정
 import DefaultPage from '@pages/DefaultPage.vue';
