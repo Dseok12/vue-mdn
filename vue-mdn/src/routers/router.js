@@ -111,7 +111,8 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
+  //history: createWebHistory(),
+  history: createWebHashHistory(),
   routes,
   // 라우트 이동 시 항상 화면 맨 위로 스크롤 이동
   scrollBehavior(to, from, savedPosition) {
