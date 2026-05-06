@@ -72,7 +72,7 @@
 <script>
 export default {
     name: 'PageComponentListItem',
-    // ✨ 핵심: 부모 컴포넌트에서 내려주는 'item' 데이터를 받을 준비를 합니다!
+    // 핵심: 부모 컴포넌트에서 내려주는 'item' 데이터를 받을 준비를 합니다!
     props: {
         item: {
             type: Object,
@@ -92,12 +92,12 @@ export default {
                 this.activeCodeSlideId = id;
             }
         },
-        // ✨ 수정 버튼 클릭 시
+        // 수정 버튼 클릭 시
         clickEdit() {
             // 부모(Banner.vue 등)에게 나 수정할 거라고 데이터와 함께 알려줍니다.
             this.$emit('edit', this.item);
         },
-        // ✨ 삭제 버튼 클릭 시
+        // 삭제 버튼 클릭 시
         clickDelete() {
             if(confirm('정말 이 게시물을 삭제하시겠습니까?')) {
                 // 부모에게 내 고유 ID를 주면서 삭제해달라고 요청합니다.
