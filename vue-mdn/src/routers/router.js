@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory,createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 
 // 변수 대신 vite.config.js에 설정해둔 Alias(@pages)를 활용한 경로 설정
 import DefaultPage from '@pages/DefaultPage.vue';
@@ -111,8 +111,8 @@ const routes = [
 ];
 
 const router = createRouter({
-  //history: createWebHistory(),
-  history: createWebHashHistory(),
+  history: createWebHistory(),
+  //history: createWebHashHistory(),
   routes,
   // 라우트 이동 시 항상 화면 맨 위로 스크롤 이동
   scrollBehavior(to, from, savedPosition) {
