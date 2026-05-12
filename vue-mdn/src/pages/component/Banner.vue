@@ -14,14 +14,15 @@
             <div class="page-component-list__box">
                 
                 <PageComponentListItem 
-                    v-for="post in bannerPosts" 
+                    v-for="post in currentPosts" 
                     :key="post.id" 
                     :item="post" 
                     @delete="handleDelete"
+                    @edit="handleEdit"
                 />
 
-                <div v-if="bannerPosts.length === 0" style="padding: 80px 0; text-align: center; color: #888; font-size: 1.2rem; background: #f8f9fa; border-radius: 10px;">
-                    등록된 배너 게시물이 없습니다. <br/>우측 상단의 '게시글 등록' 버튼을 눌러 첫 게시물을 작성해 보세요!
+                <div v-if="currentPosts.length === 0" style="padding: 80px 0; text-align: center; color: #888; font-size: 1.2rem; background: #f8f9fa; border-radius: 10px;">
+                    등록된 게시물이 없습니다. <br/>우측 상단의 '게시글 등록' 버튼을 눌러 첫 게시물을 작성해 보세요!
                 </div>
 
             </div>
@@ -32,8 +33,9 @@
 <script>
 import '../../css/pages/component/common.css';
 import '../../css/pages/component/banner.css';
-// 💡 아까 만든 리스트 아이템 컴포넌트를 불러옵니다!
 import PageComponentListItem from '../../components/PageComponentListItem.vue';
+
+import postManager from '@utils/postManager.js';
 
 export default {
     components: {
@@ -41,34 +43,30 @@ export default {
     },
     data() {
         return {
-            // 이 배열에 배너용 데이터만 담깁니다.
-            bannerPosts: [] 
+            // 변수 이름도 헷갈리지 않게 하나로 통일합니다.
+            currentPosts: [] 
         };
     },
-    // 화면이 켜지자마자 로컬 스토리지에서 데이터를 읽어오는 함수를 실행합니다.
     mounted() {
         this.loadPosts();
     },
     methods : {
+        // 1. 데이터 불러오기 (공통 두뇌 사용)
         loadPosts() {
-            // 1. 창고에서 전체 데이터를 꺼내옵니다.
-            const allPosts = JSON.parse(localStorage.getItem('megaDbPosts')) || [];
-            
-            // 2. 그 중에서 category가 'banner'인 녀석들만 남겨서(filter) 내 배열에 넣습니다.
-            // 데이터가 내 배열에 들어오는 순간, Vue가 알아서 화면에 카드들을 그려냅니다!
-            this.bannerPosts = allPosts.filter(post => post.category === 'banner');
+            // 💡 카테고리 이름('banner', 'board' 등)만 던져주면 알아서 찾아옵니다!
+            this.currentPosts = postManager.getPostsByCategory('banner');
         },
         
-        // 💡 자식 컴포넌트에서 '삭제' 버튼을 눌렀을 때 실행되는 함수
+        // 2. 데이터 삭제하기 (공통 두뇌 사용)
         handleDelete(deleteId) {
-            let allPosts = JSON.parse(localStorage.getItem('megaDbPosts')) || [];
-            
-            // 삭제하려는 ID와 다른 것들만 살려서 다시 저장합니다. (즉, 해당 ID만 삭제됨)
-            allPosts = allPosts.filter(post => post.id !== deleteId);
-            localStorage.setItem('megaDbPosts', JSON.stringify(allPosts));
-            
+            postManager.deletePostById(deleteId); // 공통 두뇌가 대신 삭제해줌
             alert('삭제되었습니다.');
-            this.loadPosts(); // 목록을 다시 불러와 화면을 최신화합니다.
+            this.loadPosts(); // 삭제 후 최신 목록으로 리셋
+        },
+        
+        // 3. 데이터 수정하기 (모든 페이지 공통 로직)
+        handleEdit(postData) {
+            this.$router.push(`/posting/post?category=${postData.category}&id=${postData.id}`);
         }
     }
 }

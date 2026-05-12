@@ -4,10 +4,10 @@
         <div class="page-component__top-wrap">
             <div class="page-component__title-wrap">
                 <p class="page-component__sub-tit">컴포넌트</p>
-                <h2 class="page-component__main-tit">게시글 등록</h2>
+                <h2 class="page-component__main-tit">{{ isEditMode ? '게시글 수정' : '게시글 등록' }}</h2>
             </div>
             <div class="page-component-btn-wrap">
-                <button class="page-component-btn page-component-btn__add" @click="savePost">등록</button>
+                <button class="page-component-btn page-component-btn__add" @click="savePost">{{ isEditMode ? '수정' : '등록' }}</button>
                 <button class="page-component-btn page-component-btn__cancel" @click="isPopupOn = true">취소</button>
             </div>
         </div>
@@ -122,8 +122,6 @@ export default {
         return {
             isPopupOn: false, 
             newLabel: '',
-            
-            // :post="formData"에서 formData 객체를 PostPreView컴포넌트로 props를 넘깁니다. 그 props의 이름은 post입니다.
             formData: {
                 title: '',
                 manager: '',
@@ -137,35 +135,67 @@ export default {
             },
         };
     },
+    computed: {
+        // 💡 주소창에 id 값이 있으면 true(수정 모드), 없으면 false(등록 모드)
+        isEditMode() {
+            return !!this.$route.query.id;
+        }
+    },
+    mounted() {
+        // 💡 화면이 켜질 때, 수정 모드라면 기존 데이터를 불러옵니다.
+        if (this.isEditMode) {
+            this.loadPostData(this.$route.query.id);
+        }
+    },
     methods: {
         fncGoBack() {
             this.$router.go(-1);
         },
+        // 💡 수정할 게시물의 데이터를 불러와서 폼에 채워주는 함수
+        loadPostData(id) {
+            const allPosts = JSON.parse(localStorage.getItem('megaDbPosts')) || [];
+            // 넘어온 ID는 문자열일 수 있으므로 Number()로 숫자로 변환해서 비교합니다.
+            const targetPost = allPosts.find(post => post.id === Number(id));
+            
+            if (targetPost) {
+                // 기존 데이터로 폼을 덮어씌웁니다.
+                this.formData = { ...targetPost };
+            } else {
+                alert('해당 게시물을 찾을 수 없습니다.');
+                this.$router.go(-1);
+            }
+        },
         savePost() {
-            // 1. 주소창에서 꼬리표(카테고리)를 확인합니다. (없으면 기본값 'common')
             const category = this.$route.query.category || 'common';
+            const editId = this.$route.query.id;
+            let existingPosts = JSON.parse(localStorage.getItem('megaDbPosts')) || [];
 
-            // 2. 창고에 저장할 완벽한 데이터 한 덩어리를 만듭니다.
-            const newPost = {
-                ...this.formData,          // 입력한 폼 데이터 전체 복사
-                id: Date.now(),            // ✨ 절대 겹치지 않는 고유 ID (현재 시간 밀리초) 부여
-                category: category,        // 어떤 페이지 소속인지 기록
-                date: new Date().toISOString().split('T')[0] // 오늘 날짜 기록
-            };
+            if (this.isEditMode) {
+                // 💡 [수정 모드] 기존 배열에서 지금 수정 중인 글의 위치(인덱스)를 찾습니다.
+                const index = existingPosts.findIndex(post => post.id === Number(editId));
+                if (index !== -1) {
+                    existingPosts[index] = {
+                        ...this.formData,
+                        id: Number(editId), // 기존 ID는 유지
+                        category: category, 
+                        date: existingPosts[index].date // 최초 작성일 유지
+                    };
+                    alert('게시글이 성공적으로 수정되었습니다!');
+                }
+            } else {
+                // 💡 [등록 모드] 기존에 작성하신 새 글 등록 로직
+                const newPost = {
+                    ...this.formData,
+                    id: Date.now(),
+                    category: category,
+                    date: new Date().toISOString().split('T')[0]
+                };
+                existingPosts.unshift(newPost);
+                alert('게시글이 성공적으로 등록되었습니다!');
+            }
 
-            // 3. 로컬 스토리지(가짜 DB)에서 기존 게시물들을 싹 가져옵니다.
-            // 만약 한 번도 쓴 적이 없으면 빈 배열 []을 준비합니다.
-            const existingPosts = JSON.parse(localStorage.getItem('megaDbPosts')) || [];
-
-            // 4. 기존 게시물 목록 맨 앞에 방금 쓴 새 글을 끼워 넣습니다.
-            existingPosts.unshift(newPost);
-
-            // 5. 다시 로컬 스토리지에 문자열(JSON)로 포장해서 덮어씌웁니다.
+            // 창고에 최종 저장 후 리스트 페이지로 이동
             localStorage.setItem('megaDbPosts', JSON.stringify(existingPosts));
-
-            alert('게시글이 성공적으로 등록되었습니다!');
-
-            // 6. 글을 다 썼으니, 꼬리표를 보고 원래 있던 페이지로 돌아갑니다.
             this.$router.push(`/component/${category}`);
         },
         addLabel() {
@@ -178,23 +208,13 @@ export default {
         removeLabel(index) {
             this.formData.labels.splice(index, 1);
         },
-        // ✨ 2. 이미지 업로드 처리 함수 추가
         handleImageUpload(event) {
-            // 사용자가 선택한 파일 배열 중 첫 번째 파일을 가져옵니다.
             const file = event.target.files[0]; 
-            
             if (file) {
-                // FileReader 객체를 생성하여 파일을 비동기적으로 읽습니다.
                 const reader = new FileReader();
-                
-                // 파일 읽기가 완료되면 실행되는 콜백 함수입니다.
                 reader.onload = (e) => {
-                    // 읽어낸 Base64 형태의 이미지 문자열을 imgUrl 데이터에 덮어씌웁니다.
-                    // 데이터가 바뀌었으므로 오른쪽 미리보기 화면이 즉시 업데이트됩니다!
                     this.formData.imgUrl = e.target.result;
                 };
-                
-                // 파일을 Data URL 형식으로 읽어들이라고 명령합니다.
                 reader.readAsDataURL(file);
             }
         }

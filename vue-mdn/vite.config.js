@@ -24,7 +24,7 @@ import path from 'node:path'
  */
 export default defineConfig({
   // 저장소 이름인 vue-mdn을 양쪽에 슬래시(/)를 포함하여 입력합니다.
-  base: '/vue-mdn/',
+  base: '/',
   plugins: [vue()],
 
   resolve: {
@@ -41,6 +41,7 @@ export default defineConfig({
       '@routers': path.resolve(__dirname, 'src/routers'),
       '@stores': path.resolve(__dirname, 'src/stores'),
       '@dataes': path.resolve(__dirname, 'src/dataes'),
+      '@utils': path.resolve(__dirname, 'src/utils'),
 
     }
   },
