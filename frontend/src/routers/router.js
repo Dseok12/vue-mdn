@@ -27,7 +27,6 @@ import ProductList from '@pages/component/ProductList.vue';
 /* @ 프로젝트 컴포넌트 등록 */
 import MegaTeacher from '@pages/project/MegaTeacher.vue';
 import MegaPass from '@pages/project/MegaPass.vue';
-// 💡 교정: ../pages 상대경로로 섞여 있던 것을 @pages Alias로 통일했습니다.
 import SatGpa from '@pages/project/SatGpa.vue';
 import UnivExam from '@pages/project/UniExam.vue';
 import CollegeInfo from '@pages/project/CollegeInfo.vue';
@@ -37,6 +36,7 @@ import MegaCampaign from '@pages/project/MegaCampaign.vue';
 /* @ 게시글 등록 */
 // 💡 핵심 교정: Post.vue(부품)가 아니라 PostEditor.vue(전체 화면)를 불러옵니다!
 import PostEditor from '@pages/posting/PostEditor.vue';
+import ProjectPostEditor from '@pages/posting/ProjectPostEditor.vue'; // ✨ 프로젝트 전용 에디터 불러오기
 
 
 const routes = [
@@ -65,44 +65,30 @@ const routes = [
   { path: '/component/video', component: Video },
   { path: '/component/popup', component: Popup },
   { path: '/component/coupon', component: Coupon },
-  { path: '/component/productlist', component: ProductList },
-
-  // 4-1. 컴포넌트 - 게시물아이템 (Component)
-  { path: '/component/banner/:megarandom', component: DefaultPage },
-  { path: '/component/quickmenu/:megarandom', component: DefaultPage },
-  { path: '/component/board/:megarandom', component: DefaultPage },
-  { path: '/component/tabmenu/:megarandom', component: DefaultPage },
-  { path: '/component/review/:megarandom', component: DefaultPage },
-  { path: '/component/event/:megarandom', component: DefaultPage },
-  { path: '/component/specialteachertab/:megarandom', component: DefaultPage },
-  // 💡 교정: vmegarandomeo 라는 오타를 video로 바로잡았습니다!
-  { path: '/component/video/:megarandom', component: DefaultPage }, 
-  { path: '/component/popup/:megarandom', component: DefaultPage },
-  { path: '/component/coupon/:megarandom', component: DefaultPage },
-  { path: '/component/productlist/:megarandom', component: DefaultPage },
-
-  // 5. 프로젝트 (Project)
+  // 5. 프로젝트 - 게시물아이템 (Project)
   { path: '/project/megateacher', component: MegaTeacher },
   { path: '/project/megapass', component: MegaPass },
   { path: '/project/examschool', component: SatGpa },
   { path: '/project/univexam', component: UnivExam },
   { path: '/project/examhighscool', component: CollegeInfo },
   { path: '/project/eventpromotion', component: DefaultPage },
-  { path: '/project/emarket', component: OnlineBookstore },
+  { path: '/project/emarket', component: DefaultPage },
   { path: '/project/megacampaign', component: MegaCampaign },
-
+  { path: '/project/onlinebookstore', component: OnlineBookstore },
   // 5-1. 프로젝트 - 게시물아이템 (Project)
-  { path: '/project/megateacher/:id', component: DefaultPage },
-  { path: '/project/megapass/:id', component: DefaultPage },
-  { path: '/project/examschool/:id', component: DefaultPage },
-  { path: '/project/univexam/:id', component: DefaultPage },
-  { path: '/project/examhighscool/:id', component: DefaultPage },
+  { path: '/project/megateacher/:id', component: MegaTeacher },
+  { path: '/project/megapass/:id', component: MegaPass },
+  { path: '/project/examschool/:id', component: SatGpa },
+  { path: '/project/univexam/:id', component: UnivExam },
+  { path: '/project/examhighscool/:id', component: CollegeInfo },
   { path: '/project/eventpromotion/:id', component: DefaultPage },
   { path: '/project/emarket/:id', component: DefaultPage },
-  { path: '/project/megacampaign/:id', component: DefaultPage },
+  { path: '/project/megacampaign/:id', component: MegaCampaign },
+  { path: '/project/onlinebookstore/:id', component: OnlineBookstore },
 
   // 💡 핵심 교정: 여기서도 Post 가 아니라 PostEditor 를 연결합니다!
-  { path: '/posting/post', component: PostEditor },
+  { path: '/posting/post', component: PostEditor }, // 컴포넌트용
+  { path: '/posting/projectpost', component: ProjectPostEditor }, // ✨ 프로젝트용 등록 화면 경로 추가
   
   { path: '/project/post/:id', component: DefaultPage },
 
@@ -112,9 +98,7 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(),
-  //history: createWebHashHistory(),
   routes,
-  // 라우트 이동 시 항상 화면 맨 위로 스크롤 이동
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition;

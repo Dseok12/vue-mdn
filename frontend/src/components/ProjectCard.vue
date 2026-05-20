@@ -13,9 +13,9 @@
             <div class="thumbnail-date">{{ item.date }}</div>
             
             <div class="projectLinks">
-                <a href="javascript:;" v-if="item.links.board"><img src="../assets/img/project_btn01.png" alt="게시판"></a>
-                <a href="javascript:;" v-if="item.links.pc"><img src="../assets/img/pc_btn02.png" alt="PC"></a>
-                <a href="javascript:;" v-if="item.links.mo"><img src="../assets/img/mo_btn03.png" alt="MO"></a>
+                <a href="javascript:;" target="_blank" v-if="item.links.board"><img src="../assets/img/project_btn01.png" alt="게시판"></a>
+                <a href="javascript:;" target="_blank" v-if="item.links.pc"><img src="../assets/img/pc_btn02.png" alt="PC"></a>
+                <a href="javascript:;" target="_blank" v-if="item.links.mo"><img src="../assets/img/mo_btn03.png" alt="MO"></a>
             </div>
         </div>
     </div>
