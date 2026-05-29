@@ -1,0 +1,64 @@
+<template>
+    <div class="page-component-list__item-wrap" v-if="post">
+        <div class="page-component-list__item">
+            <div class="banner-list__item-img">
+                <a :href="post.imgUrl" target="_blank">
+                    <img :src="post.imgUrl" alt="배너 이미지">
+                </a>
+            </div>
+            <div class="page-component-list__item-txt">
+                <h6 class="page-component-list__item-txt-title">
+                    {{ post.title || '제목을 입력해주세요' }}
+                </h6>
+                <div class="page-component-list__item-label-box">
+                    <span class="label label-device__type01" v-for="device in post.deviceType" :key="device">{{ device }}</span>
+                    <span class="label label-type01__color01" v-for="(label, index) in post.labels" :key="index">{{ label }}</span>
+                </div>
+                <ul class="page-component-list__item-link">
+                    <li>
+                        <span>프로젝트 게시판:</span>
+                        <a v-if="post.MegaProjectLink" :href="post.MegaProjectLink" target="_blank">
+                            {{ post.MegaProjectLink }}
+                        </a>
+                        <p v-else>링크가 없습니다.</p>
+                    </li>
+
+                    <li>
+                        <span>PC 링크:</span>
+                        <a v-if="post.PcLink" :href="post.PcLink" target="_blank">
+                            {{ post.PcLink }}
+                        </a>
+                        <p v-else>링크가 없습니다.</p>
+                    </li>
+
+                    <li>
+                        <span>MOBILE 링크:</span>
+                        <a v-if="post.MoLink" :href="post.MoLink" target="_blank">
+                            {{ post.MoLink }}
+                        </a>
+                        <p v-else>링크가 없습니다.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'PostPreview',
+    props: {
+        post: {
+            type: Object,
+            required: true
+        }
+    },
+    data() {
+        return {
+            activeCodeSlideId: null,   
+        };
+    },
+    methods : {
+    }
+}
+</script>

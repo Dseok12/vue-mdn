@@ -6,7 +6,7 @@
                 <h2 class="page-project__main-tit">메가선생님</h2>
             </div>
             <div class="page-project-btn-wrap">
-                <router-link to="../posting/post" class="page-project__add-post__btn" >게시글 등록</router-link>
+                <router-link :to="{ name: 'ProjectPostEditor' }" class="page-project__add-post__btn" >게시글 등록</router-link>
             </div>
         </div>
 

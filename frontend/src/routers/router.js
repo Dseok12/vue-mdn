@@ -44,51 +44,53 @@ const routes = [
   { path: '/', redirect: '/intro/summary' },
 
   // 2. 소개 (Intro)
-  { path: '/intro/summary', component: IntroSummary },
-  { path: '/intro/designrule', component: IntroDesignRule },
+  { path: '/intro/summary', name: 'IntroSummary', component: IntroSummary },
+  { path: '/intro/designrule', name: 'IntroDesignRule', component: IntroDesignRule },
 
   // 3. 스타일 가이드 (Style Guide)
-  { path: '/style-guide/logo', component: DefaultPage },
-  { path: '/style-guide/color', component: DefaultPage },
-  { path: '/style-guide/font', component: FontStyle },
-  { path: '/style-guide/layout', component: DefaultPage },
-  { path: '/style-guide/icon', component: DefaultPage },
+  { path: '/style-guide/logo', name: 'DefaultPage', component: DefaultPage },
+  { path: '/style-guide/color', name: 'DefaultPage', component: DefaultPage },
+  { path: '/style-guide/font', name: 'FontStyle', component: FontStyle },
+  { path: '/style-guide/layout', name: 'DefaultPage', component: DefaultPage },
+  { path: '/style-guide/icon', name: 'DefaultPage', component: DefaultPage },
 
   // 4. 컴포넌트 (Component)
-  { path: '/component/banner', component: Banner },
-  { path: '/component/quickmenu', component: QuickMenu },
-  { path: '/component/board', component: Board },
-  { path: '/component/tabmenu', component: TabMenu },
-  { path: '/component/review', component: Review },
-  { path: '/component/event', component: Event },
-  { path: '/component/specialteachertab', component: SpecialTeacherTab },
-  { path: '/component/video', component: Video },
-  { path: '/component/popup', component: Popup },
-  { path: '/component/coupon', component: Coupon },
+  { path: '/component/banner', name: 'Banner', component: Banner },
+  { path: '/component/quickmenu', name: 'QuickMenu', component: QuickMenu },
+  { path: '/component/board', name: 'Board', component: Board },
+  { path: '/component/tabmenu', name: 'TabMenu', component: TabMenu },
+  { path: '/component/review', name: 'Review', component: Review },
+  { path: '/component/event', name: 'Event', component: Event },
+  { path: '/component/specialteachertab', name: 'SpecialTeacherTab', component: SpecialTeacherTab },
+  { path: '/component/video', name: 'Video', component: Video },
+  { path: '/component/popup', name: 'Popup', component: Popup },
+  { path: '/component/coupon', name: 'Coupon', component: Coupon },
+
   // 5. 프로젝트 - 게시물아이템 (Project)
-  { path: '/project/megateacher', component: MegaTeacher },
-  { path: '/project/megapass', component: MegaPass },
-  { path: '/project/examschool', component: SatGpa },
-  { path: '/project/univexam', component: UnivExam },
-  { path: '/project/examhighscool', component: CollegeInfo },
-  { path: '/project/eventpromotion', component: DefaultPage },
-  { path: '/project/emarket', component: DefaultPage },
-  { path: '/project/megacampaign', component: MegaCampaign },
-  { path: '/project/onlinebookstore', component: OnlineBookstore },
+  { path: '/project/megateacher', name: 'MegaTeacher', component: MegaTeacher },
+  { path: '/project/megapass', name: 'MegaPass', component: MegaPass },
+  { path: '/project/examschool', name: 'SatGpa', component: SatGpa },
+  { path: '/project/univexam', name: 'UnivExam', component: UnivExam },
+  { path: '/project/examhighscool', name: 'CollegeInfo', component: CollegeInfo },
+  { path: '/project/eventpromotion', name: 'DefaultPage', component: DefaultPage },
+  { path: '/project/emarket', name: 'DefaultPage', component: DefaultPage },
+  { path: '/project/megacampaign', name: 'MegaCampaign', component: MegaCampaign },
+  { path: '/project/onlinebookstore', name: 'OnlineBookstore', component: OnlineBookstore },
+  
   // 5-1. 프로젝트 - 게시물아이템 (Project)
-  { path: '/project/megateacher/:id', component: MegaTeacher },
-  { path: '/project/megapass/:id', component: MegaPass },
-  { path: '/project/examschool/:id', component: SatGpa },
-  { path: '/project/univexam/:id', component: UnivExam },
-  { path: '/project/examhighscool/:id', component: CollegeInfo },
-  { path: '/project/eventpromotion/:id', component: DefaultPage },
-  { path: '/project/emarket/:id', component: DefaultPage },
-  { path: '/project/megacampaign/:id', component: MegaCampaign },
-  { path: '/project/onlinebookstore/:id', component: OnlineBookstore },
+  { path: '/project/megateacher/:id',  component: MegaTeacher },
+  { path: '/project/megapass/:id',  component: MegaPass },
+  { path: '/project/examschool/:id',  component: SatGpa },
+  { path: '/project/univexam/:id',  component: UnivExam },
+  { path: '/project/examhighscool/:id',  component: CollegeInfo },
+  { path: '/project/eventpromotion/:id',  component: DefaultPage },
+  { path: '/project/emarket/:id',  component: DefaultPage },
+  { path: '/project/megacampaign/:id',  component: MegaCampaign },
+  { path: '/project/onlinebookstore/:id',  component: OnlineBookstore },
 
   // 💡 핵심 교정: 여기서도 Post 가 아니라 PostEditor 를 연결합니다!
-  { path: '/posting/post', component: PostEditor }, // 컴포넌트용
-  { path: '/posting/projectpost', component: ProjectPostEditor }, // ✨ 프로젝트용 등록 화면 경로 추가
+  { path: '/posting/post', name: 'PostEditor', component: PostEditor }, // 컴포넌트용
+  { path: '/posting/projectpost', name: 'ProjectPostEditor', component: ProjectPostEditor }, // ✨ 프로젝트용 등록 화면 경로 추가
   
   { path: '/project/post/:id', component: DefaultPage },
 
