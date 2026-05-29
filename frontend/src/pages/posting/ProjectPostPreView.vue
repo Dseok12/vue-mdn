@@ -55,7 +55,14 @@ export default {
     },
     data() {
         return {
-            activeCodeSlideId: null,   
+            activeCodeSlideId: null,
+            formData: {
+                title: '',
+                tags: ['신규런칭'], 
+                links: { board: '', pc: '', mo: '' }, // 💡 구조 변경
+                imgUrl: 'https://placehold.co/400x300?text=Preview',
+                date: new Date().toISOString().split('T')[0]
+            },
         };
     },
     methods : {

@@ -6,7 +6,7 @@
                 <h2 class="page-project__main-tit">입시정보</h2>
             </div>
             <div class="page-project-btn-wrap">
-                <router-link to="../posting/post" class="page-project__add-post__btn" >게시글 등록</router-link>
+                <router-link to="/posting/projectpost?category=examhighscool" class="page-project__add-post__btn">게시글 등록</router-link>
             </div>
         </div>
     </div>
