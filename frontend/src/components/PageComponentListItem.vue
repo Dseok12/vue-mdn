@@ -3,47 +3,47 @@
         <div class="page-component-list__item">
             
             <div class="banner-list__item-img">
-                <a :href="item.imgUrl" target="_blank">
-                    <img :src="item.imgUrl" alt="배너 이미지">
+                <a :href="displayItem.imgUrl" target="_blank">
+                    <img :src="displayItem.imgUrl" alt="배너 이미지">
                 </a>
             </div>
             
             <div class="page-component-list__item-txt">
-                <h6 class="page-component-list__item-txt-title">{{ item.title }}</h6>
+                <h6 class="page-component-list__item-txt-title">{{ displayItem.title }}</h6>
                 
                 <div class="page-component-list__item-label-box">
-                    <span class="label label-device__type01" v-for="device in item.deviceType" :key="device">
+                    <span class="label label-device__type01" v-for="device in displayItem.deviceType" :key="device">
                         {{ device }}
                     </span>
-                    <span class="label label-type01__color01" v-for="(label, index) in item.labels" :key="'label-'+index">
-                        {{ label }}
+                    <span class="label label-type01__color01" v-for="(tag, index) in displayItem.tags" :key="'tag-'+index">
+                        {{ tag }}
                     </span>
                 </div>
                 
                 <div class="page-component-list__item-manager">
-                    <strong>담당자 : </strong><span>{{ item.manager }}</span>
+                    <strong>담당자 : </strong><span>{{ displayItem.manager }}</span>
                 </div>
                 <ul class="page-component-list__item-link">
                     <li>
                         <span>프로젝트 게시판:</span>
-                        <a v-if="item.MegaProjectLink" :href="item.MegaProjectLink" target="_blank">
-                            {{ item.MegaProjectLink }}
+                        <a v-if="displayItem.links.board" :href="displayItem.links.board" target="_blank">
+                            {{ displayItem.links.board }}
                         </a>
                         <p v-else>링크가 없습니다.</p>
                     </li>
 
                     <li>
                         <span>PC 링크:</span>
-                        <a v-if="item.PcLink" :href="item.PcLink" target="_blank">
-                            {{ item.PcLink }}
+                        <a v-if="displayItem.links.pc" :href="displayItem.links.pc" target="_blank">
+                            {{ displayItem.links.pc }}
                         </a>
                         <p v-else>링크가 없습니다.</p>
                     </li>
 
                     <li>
                         <span>MOBILE 링크:</span>
-                        <a v-if="item.MoLink" :href="item.MoLink" target="_blank">
-                            {{ item.MoLink }}
+                        <a v-if="displayItem.links.mo" :href="displayItem.links.mo" target="_blank">
+                            {{ displayItem.links.mo }}
                         </a>
                         <p v-else>링크가 없습니다.</p>
                     </li>
@@ -62,7 +62,7 @@
             
             <div class="codeArea__inner" :class="{ 'codeArea-is-open': activeCodeSlideId === item.id }">
                 <div class="codeArea__inner--box">
-                    <pre>{{ item.cssCode }}</pre>
+                    <pre>{{ displayItem.cssCode }}</pre>
                 </div>
             </div>
         </div>
@@ -83,6 +83,22 @@ export default {
         return {
             activeCodeSlideId: null,   
         };
+    },
+    computed: {
+        displayItem() {
+            const links = this.item.links || {};
+            return {
+                ...this.item,
+                imgUrl: this.item.imgUrl || this.item.thumbnailUrl,
+                deviceType: this.item.deviceType || this.item.deviceTypes || [],
+                tags: this.item.tags || this.item.labels || [],
+                links: {
+                    board: links.board || this.item.MegaProjectLink || '',
+                    pc: links.pc || this.item.PcLink || '',
+                    mo: links.mo || this.item.MoLink || '',
+                }
+            };
+        }
     },
     methods : {
         toggleCodeSlide(id) {

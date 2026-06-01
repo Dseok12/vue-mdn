@@ -44,7 +44,7 @@
                         placeholder="태그 입력 후 엔터를 치세요"
                     >
                     <div class="tag-list">
-                        <span class="tag-item" v-for="(tag, index) in formData.labels" :key="index">
+                        <span class="tag-item" v-for="(tag, index) in formData.tags" :key="index">
                             {{ tag }}
                             <button class="btn-tag-delete" @click="removeLabel(index)">✕</button>
                         </span>
@@ -55,15 +55,15 @@
                     <label>링크 등록</label>
                     <div class="link-box">
                         <span>프로젝트 게시판 링크: </span>
-                        <input type="text" v-model="formData.MegaProjectLink" placeholder="예: http://...">
+                        <input type="text" v-model="formData.links.board" placeholder="예: http://...">
                     </div>
                     <div class="link-box">
                         <span>PC 화면 링크: </span>
-                        <input type="text" v-model="formData.PcLink" placeholder="예: http://...">
+                        <input type="text" v-model="formData.links.pc" placeholder="예: http://...">
                     </div>
                     <div class="link-box">
                         <span>MOBILE 화면 링크: </span>
-                        <input type="text" v-model="formData.MoLink" placeholder="예: http://...">
+                        <input type="text" v-model="formData.links.mo" placeholder="예: http://...">
                     </div>
                 </div>
                 <hr/>
@@ -84,6 +84,7 @@
 <script>
 // ✨ 프로젝트 카드를 미리보기로 사용합니다.
 import ProjectCard from '@/components/ProjectCard.vue'; 
+import postManager, { normalizePost } from '@/utils/postManager.js';
 import "../../css/pages/component/common.css";
 import "../../css/pages/posting/posting.css";
 
@@ -96,11 +97,14 @@ export default {
             isPopupOn: false, 
             newLabel: '',
             formData: {
+                type: 'project',
                 title: '',
-                labels: ['신규런칭'], 
-                MegaProjectLink: '', 
-                PcLink: '', 
-                MoLink: '', 
+                tags: ['신규런칭'],
+                links: {
+                    board: '',
+                    pc: '',
+                    mo: '',
+                },
                 imgUrl: 'https://placehold.co/400x300/e2e8f0/475569?text=Preview',
                 date: new Date().toISOString().split('T')[0] // 미리보기를 위해 오늘 날짜 세팅
             },
@@ -121,10 +125,10 @@ export default {
             this.$router.go(-1);
         },
         loadPostData(id) {
-            const allPosts = JSON.parse(localStorage.getItem('megaDbPosts')) || [];
+            const allPosts = postManager.getAllPosts();
             const targetPost = allPosts.find(post => post.id === Number(id));
             if (targetPost) {
-                this.formData = { ...targetPost };
+                this.formData = normalizePost({ ...targetPost, type: 'project' });
             } else {
                 alert('해당 게시물을 찾을 수 없습니다.');
                 this.$router.go(-1);
@@ -134,43 +138,42 @@ export default {
             // 프로젝트는 기본 카테고리가 project로 빠집니다.
             const category = this.$route.query.category || 'megateacher';
             const editId = this.$route.query.id;
-            let existingPosts = JSON.parse(localStorage.getItem('megaDbPosts')) || [];
+            const now = new Date().toISOString().split('T')[0];
 
             if (this.isEditMode) {
-                const index = existingPosts.findIndex(post => post.id === Number(editId));
-                if (index !== -1) {
-                    existingPosts[index] = {
-                        ...this.formData,
-                        id: Number(editId), 
-                        category: category, 
-                        date: existingPosts[index].date 
-                    };
-                    alert('프로젝트가 성공적으로 수정되었습니다!');
-                }
+                postManager.savePost({
+                    ...this.formData,
+                    id: Number(editId),
+                    type: 'project',
+                    category,
+                    updatedAt: now,
+                });
+                alert('프로젝트가 성공적으로 수정되었습니다!');
             } else {
-                const newPost = {
+                postManager.savePost({
                     ...this.formData,
                     id: Date.now(),
-                    category: category,
-                    date: new Date().toISOString().split('T')[0]
-                };
-                existingPosts.unshift(newPost);
+                    type: 'project',
+                    category,
+                    createdAt: now,
+                    updatedAt: now,
+                    date: now,
+                });
                 alert('프로젝트가 성공적으로 등록되었습니다!');
             }
 
-            localStorage.setItem('megaDbPosts', JSON.stringify(existingPosts));
             // 💡 저장 후 프로젝트 카테고리 페이지로 이동합니다.
             this.$router.push(`/project/${category}`);
         },
         addLabel() {
             const trimmedLabel = this.newLabel.trim(); 
-            if (trimmedLabel && !this.formData.labels.includes(trimmedLabel)) {
-                this.formData.labels.push(trimmedLabel);
+            if (trimmedLabel && !this.formData.tags.includes(trimmedLabel)) {
+                this.formData.tags.push(trimmedLabel);
             }
             this.newLabel = ''; 
         },
         removeLabel(index) {
-            this.formData.labels.splice(index, 1);
+            this.formData.tags.splice(index, 1);
         },
         handleImageUpload(event) {
             const file = event.target.files[0]; 

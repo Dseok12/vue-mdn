@@ -53,7 +53,7 @@
                         placeholder="태그 입력 후 엔터를 치세요"
                     >
                     <div class="tag-list">
-                        <span class="tag-item" v-for="(label, index) in formData.labels" :key="index">
+                        <span class="tag-item" v-for="(label, index) in formData.tags" :key="index">
                             {{ label }}
                             <button class="btn-tag-delete" @click="removeLabel(index)">✕</button>
                         </span>
@@ -66,7 +66,7 @@
                         <span>프로젝트게시판: </span>
                         <input 
                             type="text" 
-                            v-model="formData.MegaProjectLink" 
+                            v-model="formData.links.board" 
                             placeholder="해당 프로젝트 게시판 링크를 입력하세요."
                         >
                     </div>
@@ -74,7 +74,7 @@
                         <span>PC 링크: </span>
                         <input 
                             type="text" 
-                            v-model="formData.PcLink" 
+                            v-model="formData.links.pc" 
                             placeholder="백업된 next 링크를 입력하세요."
                         >
                     </div>
@@ -82,7 +82,7 @@
                         <span>MOBILE 링크: </span>
                         <input 
                             type="text" 
-                            v-model="formData.MoLink" 
+                            v-model="formData.links.mo" 
                             placeholder="백업된 next 링크를 입력하세요."
                         >
                     </div>
@@ -111,6 +111,7 @@
 
 <script>
 import PostPreview from './PostPreView.vue'; 
+import postManager, { normalizePost } from '@/utils/postManager.js';
 import "../../css/pages/component/common.css";
 import "../../css/pages/posting/posting.css";
 
@@ -123,14 +124,17 @@ export default {
             isPopupOn: false, 
             newLabel: '',
             formData: {
+                type: 'component',
                 title: '',
                 manager: '',
                 cssCode: '',
                 deviceType: ['PC', 'MO'], 
-                labels: ['배너', '이벤트'], 
-                MegaProjectLink: '', 
-                PcLink: '', 
-                MoLink: '', 
+                tags: ['배너', '이벤트'],
+                links: {
+                    board: '',
+                    pc: '',
+                    mo: '',
+                },
                 imgUrl: 'https://placehold.co/600x800' 
             },
         };
@@ -153,13 +157,13 @@ export default {
         },
         // 💡 수정할 게시물의 데이터를 불러와서 폼에 채워주는 함수
         loadPostData(id) {
-            const allPosts = JSON.parse(localStorage.getItem('megaDbPosts')) || [];
+            const allPosts = postManager.getAllPosts();
             // 넘어온 ID는 문자열일 수 있으므로 Number()로 숫자로 변환해서 비교합니다.
             const targetPost = allPosts.find(post => post.id === Number(id));
             
             if (targetPost) {
                 // 기존 데이터로 폼을 덮어씌웁니다.
-                this.formData = { ...targetPost };
+                this.formData = normalizePost({ ...targetPost, type: 'component' });
             } else {
                 alert('해당 게시물을 찾을 수 없습니다.');
                 this.$router.go(-1);
@@ -168,45 +172,42 @@ export default {
         savePost() {
             const category = this.$route.query.category || 'common';
             const editId = this.$route.query.id;
-            let existingPosts = JSON.parse(localStorage.getItem('megaDbPosts')) || [];
+            const now = new Date().toISOString().split('T')[0];
 
             if (this.isEditMode) {
-                // 💡 [수정 모드] 기존 배열에서 지금 수정 중인 글의 위치(인덱스)를 찾습니다.
-                const index = existingPosts.findIndex(post => post.id === Number(editId));
-                if (index !== -1) {
-                    existingPosts[index] = {
-                        ...this.formData,
-                        id: Number(editId), // 기존 ID는 유지
-                        category: category, 
-                        date: existingPosts[index].date // 최초 작성일 유지
-                    };
-                    alert('게시글이 성공적으로 수정되었습니다!');
-                }
+                postManager.savePost({
+                    ...this.formData,
+                    id: Number(editId),
+                    type: 'component',
+                    category,
+                    updatedAt: now,
+                });
+                alert('게시글이 성공적으로 수정되었습니다!');
             } else {
-                // 💡 [등록 모드] 기존에 작성하신 새 글 등록 로직
-                const newPost = {
+                postManager.savePost({
                     ...this.formData,
                     id: Date.now(),
-                    category: category,
-                    date: new Date().toISOString().split('T')[0]
-                };
-                existingPosts.unshift(newPost);
+                    type: 'component',
+                    category,
+                    createdAt: now,
+                    updatedAt: now,
+                    date: now,
+                });
                 alert('게시글이 성공적으로 등록되었습니다!');
             }
 
             // 창고에 최종 저장 후 리스트 페이지로 이동
-            localStorage.setItem('megaDbPosts', JSON.stringify(existingPosts));
             this.$router.push(`/component/${category}`);
         },
         addLabel() {
             const trimmedLabel = this.newLabel.trim(); 
-            if (trimmedLabel && !this.formData.labels.includes(trimmedLabel)) {
-                this.formData.labels.push(trimmedLabel);
+            if (trimmedLabel && !this.formData.tags.includes(trimmedLabel)) {
+                this.formData.tags.push(trimmedLabel);
             }
             this.newLabel = ''; 
         },
         removeLabel(index) {
-            this.formData.labels.splice(index, 1);
+            this.formData.tags.splice(index, 1);
         },
         handleImageUpload(event) {
             const file = event.target.files[0]; 

@@ -6,7 +6,7 @@
                 <h2 class="page-component__main-tit">이벤트</h2>
             </div>
             <div class="page-component-btn-wrap">
-                <router-link to="../postingpost?category=event" class="page-component__add-post__btn" >게시글 등록</router-link>
+                <router-link to="/posting/post?category=event" class="page-component__add-post__btn" >게시글 등록</router-link>
             </div>
         </div>
         <div class="page-component-list__wrap">

@@ -21,32 +21,32 @@ const LeftMenu = [
   {
     id: "menu-style-guide",
     title: "스타일 가이드",
-    path: "/styleguide/logo",
+    path: "/style-guide/logo",
     children: [
       {
         id: "menu-style-guide-01",
         title: "로고",
-        path: "/styleguide/logo",
+        path: "/style-guide/logo",
       },
       {
         id: "menu-style-guide-02",
         title: "색상",
-        path: "/styleguide/color",
+        path: "/style-guide/color",
       },
       {
         id: "menu-style-guide-03",
         title: "서체",
-        path: "/styleguide/font",
+        path: "/style-guide/font",
       },
       {
         id: "menu-style-guide-04",
         title: "레이아웃",
-        path: "/styleguide/layout",
+        path: "/style-guide/layout",
       },
       {
         id: "menu-style-guide-05",
         title: "아이콘",
-        path: "/styleguide/icon",
+        path: "/style-guide/icon",
       },
     ],
   },
@@ -115,7 +115,7 @@ const LeftMenu = [
   {
     id: "menu-project",
     title: "프로젝트",
-    path: "/project/mega-teacher",
+    path: "/project/megateacher",
     children: [
       {
         id: "menu-project-01",
@@ -150,7 +150,7 @@ const LeftMenu = [
       {
         id: "menu-project-07",
         title: "온라인서점",
-        path: "/project/emarket",
+        path: "/project/onlinebookstore",
       },
       {
         id: "menu-project-08",

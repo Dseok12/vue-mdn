@@ -18,7 +18,7 @@
             <router-link to="/component/banner" class="top-header__nav-link" :class="{ 'top-header__nav-link--active': $route.path.startsWith('/component') }">컴포넌트</router-link>
           </li>
           <li class="top-header__nav-item">
-            <router-link to="/project/mega-teacher" class="top-header__nav-link" :class="{ 'top-header__nav-link--active': $route.path.startsWith('/project') }">프로젝트</router-link>
+            <router-link to="/project/megateacher" class="top-header__nav-link" :class="{ 'top-header__nav-link--active': $route.path.startsWith('/project') }">프로젝트</router-link>
           </li>
           <li class="top-header__nav-item" v-if="$route.path === '/admin'">
             <router-link to="/admin" class="top-header__nav-link" :class="{ 'top-header__nav-link--active': $route.path.startsWith('/admin') }">관리자</router-link>

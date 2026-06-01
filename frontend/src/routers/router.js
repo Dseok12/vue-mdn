@@ -65,6 +65,7 @@ const routes = [
   { path: '/component/video', name: 'Video', component: Video },
   { path: '/component/popup', name: 'Popup', component: Popup },
   { path: '/component/coupon', name: 'Coupon', component: Coupon },
+  { path: '/component/productlist', name: 'ProductList', component: ProductList },
 
   // 5. 프로젝트 - 게시물아이템 (Project)
   { path: '/project/megateacher', name: 'MegaTeacher', component: MegaTeacher },
