@@ -32,6 +32,7 @@ import UnivExam from '@pages/project/UniExam.vue';
 import CollegeInfo from '@pages/project/CollegeInfo.vue';
 import OnlineBookstore from '@pages/project/OnlineBookstore.vue';
 import MegaCampaign from '@pages/project/MegaCampaign.vue';
+import EventPromotion from '@pages/project/EventPromotion.vue';
 
 /* @ 게시글 등록 */
 // 💡 핵심 교정: Post.vue(부품)가 아니라 PostEditor.vue(전체 화면)를 불러옵니다!
@@ -73,7 +74,7 @@ const routes = [
   { path: '/project/examschool', name: 'SatGpa', component: SatGpa },
   { path: '/project/univexam', name: 'UnivExam', component: UnivExam },
   { path: '/project/examhighscool', name: 'CollegeInfo', component: CollegeInfo },
-  { path: '/project/eventpromotion', name: 'DefaultPage', component: DefaultPage },
+  { path: '/project/eventpromotion', name: 'EventPromotion', component: EventPromotion },
   { path: '/project/emarket', name: 'DefaultPage', component: DefaultPage },
   { path: '/project/megacampaign', name: 'MegaCampaign', component: MegaCampaign },
   { path: '/project/onlinebookstore', name: 'OnlineBookstore', component: OnlineBookstore },
@@ -84,7 +85,7 @@ const routes = [
   { path: '/project/examschool/:id',  component: SatGpa },
   { path: '/project/univexam/:id',  component: UnivExam },
   { path: '/project/examhighscool/:id',  component: CollegeInfo },
-  { path: '/project/eventpromotion/:id',  component: DefaultPage },
+  { path: '/project/eventpromotion/:id',  component: EventPromotion },
   { path: '/project/emarket/:id',  component: DefaultPage },
   { path: '/project/megacampaign/:id',  component: MegaCampaign },
   { path: '/project/onlinebookstore/:id',  component: OnlineBookstore },

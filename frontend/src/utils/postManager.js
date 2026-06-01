@@ -36,17 +36,40 @@ function normalizePost(post = {}) {
     };
 }
 
+function getPostTime(post) {
+    const dateValue = post.updatedAt || post.createdAt || post.date || '';
+    const parsedTime = new Date(dateValue).getTime();
+
+    if (!Number.isNaN(parsedTime)) {
+        return parsedTime;
+    }
+
+    return Number(post.id) || 0;
+}
+
+function sortNewestFirst(posts) {
+    return [...posts].sort((a, b) => {
+        const timeDiff = getPostTime(b) - getPostTime(a);
+
+        if (timeDiff !== 0) {
+            return timeDiff;
+        }
+
+        return (Number(b.id) || 0) - (Number(a.id) || 0);
+    });
+}
+
 export { normalizePost };
 
 export default {
     getAllPosts() {
-        return readPosts().map(normalizePost);
+        return sortNewestFirst(readPosts().map(normalizePost));
     },
 
     getPostsByCategory(categoryName, type) {
-        return readPosts()
+        return sortNewestFirst(readPosts()
             .map(normalizePost)
-            .filter(post => post.category === categoryName && (!type || post.type === type));
+            .filter(post => post.category === categoryName && (!type || post.type === type)));
     },
 
     savePost(postData) {
