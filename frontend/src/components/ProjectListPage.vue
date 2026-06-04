@@ -7,7 +7,7 @@
             </div>
             <div class="page-project-btn-wrap">
                 <router-link :to="`/posting/projectpost?category=${category}`" class="page-project__add-post__btn">
-                    게시글 등록
+                    게시물 등록
                 </router-link>
             </div>
         </div>
@@ -26,8 +26,8 @@
                     v-else
                     style="padding: 80px 0; text-align: center; color: #888; font-size: 1.2rem; background: #f8f9fa; border-radius: 10px;"
                 >
-                    등록된 프로젝트 게시글이 없습니다.<br>
-                    우측 상단의 '게시글 등록' 버튼을 눌러 첫 게시글을 작성해 보세요.
+                    등록된 프로젝트 게시물이 없습니다.<br>
+                    우측 상단의 '게시물 등록' 버튼을 눌러 첫 게시물을 작성해보세요.
                 </div>
 
                 <div class="pagination" v-if="totalPages > 1">

@@ -1,21 +1,31 @@
 <template>
     <div class="thumbnail-card">
         <div class="thumbnail-img">
-            <img :src="displayItem.imgUrl" :alt="displayItem.title">
+            <router-link :to="detailPath">
+                <img :src="displayItem.imgUrl" :alt="displayItem.title">
+            </router-link>
         </div>
         <div class="thumbnail-content">
-            <h3 class="thumbnail-title">{{ displayItem.title }}</h3>
+            <h3 class="thumbnail-title">
+                <router-link :to="detailPath">{{ displayItem.title }}</router-link>
+            </h3>
             <div class="tags-container">
                 <span class="tag" v-for="(tag, index) in displayItem.tags" :key="index">
                     {{ tag }}
                 </span>
             </div>
             <div class="thumbnail-date">{{ displayItem.date }}</div>
-            
+
             <div class="projectLinks">
-                <a :href="displayItem.links.board" target="_blank" v-if="displayItem.links.board"><img src="../assets/img/project_btn01.png" alt="게시판"></a>
-                <a :href="displayItem.links.pc" target="_blank" v-if="displayItem.links.pc"><img src="../assets/img/pc_btn02.png" alt="PC"></a>
-                <a :href="displayItem.links.mo" target="_blank" v-if="displayItem.links.mo"><img src="../assets/img/mo_btn03.png" alt="MO"></a>
+                <a :href="displayItem.links.board" target="_blank" v-if="displayItem.links.board">
+                    <img src="../assets/img/project_btn01.png" alt="게시판">
+                </a>
+                <a :href="displayItem.links.pc" target="_blank" v-if="displayItem.links.pc">
+                    <img src="../assets/img/pc_btn02.png" alt="PC">
+                </a>
+                <a :href="displayItem.links.mo" target="_blank" v-if="displayItem.links.mo">
+                    <img src="../assets/img/mo_btn03.png" alt="MO">
+                </a>
             </div>
         </div>
     </div>
@@ -24,7 +34,6 @@
 <script>
 export default {
     name: 'ProjectCard',
-    // 💡 부모(MegaTeacher.vue)가 넘겨줄 데이터 명세서입니다.
     props: {
         item: {
             type: Object,
@@ -45,6 +54,9 @@ export default {
                     mo: links.mo || this.item.MoLink || '',
                 }
             };
+        },
+        detailPath() {
+            return `/project/${this.displayItem.category}/${this.displayItem.id}`;
         }
     }
 }
