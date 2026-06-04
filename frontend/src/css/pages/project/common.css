@@ -17,7 +17,7 @@
 .tags-container{ display: flex;flex-wrap: wrap;gap: 6px;margin-bottom: 5%;}
 .thumbnail-content{padding: 5% 0 0 0;}
 .tag{background-color: #efefef;padding: 4px 8px;border-radius: 5px;font-size: 0.9rem;display: inline-block;}
-.thumbnail-date{font-size: 1.2rem;margin-bottom: 5%;}
+.thumbnail-date{font-size: 1rem;margin-bottom: 1%;}
 .projectLinks{display: flex;align-items: center;justify-content: center;}
 .projectLinks a{width: 20%; margin: 0 2%;}
 .projectLinks img{width: 100%;max-width: 60px;}
