@@ -3,7 +3,7 @@
         <div class="page-component-list__item">
             <div class="banner-list__item-img">
                 <a :href="displayPost.imgUrl" target="_blank">
-                    <img :src="displayPost.imgUrl" alt="배너 이미지">
+                    <img :src="displayPost.imgUrl" alt="프로젝트 이미지">
                 </a>
             </div>
             <div class="page-component-list__item-txt">
@@ -46,7 +46,7 @@
 
 <script>
 export default {
-    name: 'PostPreview',
+    name: 'ProjectPostPreview',
     props: {
         post: {
             type: Object,
@@ -68,8 +68,6 @@ export default {
                 }
             };
         }
-    },
-    methods : {
     }
 }
 </script>

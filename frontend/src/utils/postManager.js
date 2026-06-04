@@ -66,6 +66,15 @@ export default {
         return sortNewestFirst(readPosts().map(normalizePost));
     },
 
+    getPostById(id) {
+        const numericId = Number(id);
+        const targetPost = readPosts()
+            .map(normalizePost)
+            .find(post => Number(post.id) === numericId);
+
+        return targetPost || null;
+    },
+
     getPostsByCategory(categoryName, type) {
         return sortNewestFirst(readPosts()
             .map(normalizePost)
@@ -75,7 +84,7 @@ export default {
     savePost(postData) {
         const posts = readPosts();
         const normalizedPost = normalizePost(postData);
-        const index = posts.findIndex(post => post.id === normalizedPost.id);
+        const index = posts.findIndex(post => Number(post.id) === Number(normalizedPost.id));
 
         if (index >= 0) {
             posts[index] = normalizedPost;
@@ -88,7 +97,7 @@ export default {
     },
 
     deletePostById(deleteId) {
-        const posts = readPosts().filter(post => post.id !== deleteId);
+        const posts = readPosts().filter(post => Number(post.id) !== Number(deleteId));
         writePosts(posts);
     }
 };

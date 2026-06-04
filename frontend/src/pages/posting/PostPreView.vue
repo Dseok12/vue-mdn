@@ -3,7 +3,7 @@
         <div class="page-component-list__item">
             <div class="banner-list__item-img">
                 <a :href="displayPost.imgUrl" target="_blank">
-                    <img :src="displayPost.imgUrl" alt="배너 이미지">
+                    <img :src="displayPost.imgUrl" alt="게시물 이미지">
                 </a>
             </div>
             <div class="page-component-list__item-txt">
@@ -15,7 +15,7 @@
                     <span class="label label-type01__color01" v-for="(tag, index) in displayPost.tags" :key="index">{{ tag }}</span>
                 </div>
                 <div class="page-component-list__item-manager">
-                    <strong>담당자 : </strong><span>{{ displayPost.manager || '담당자 미정' }}</span>
+                    <strong>담당자: </strong><span>{{ displayPost.manager || '담당자 미정' }}</span>
                 </div>
                 <ul class="page-component-list__item-link">
                     <li>
@@ -66,7 +66,7 @@ export default {
     },
     data() {
         return {
-            activeCodeSlideId: null,   
+            activeCodeSlideId: null,
         };
     },
     computed: {
