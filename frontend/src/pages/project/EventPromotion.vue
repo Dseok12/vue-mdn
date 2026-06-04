@@ -1,5 +1,5 @@
 <template>
-    <ProjectListPage title="이벤트ㆍ프로모션" category="eventpromotion" />
+    <ProjectListPage title="이벤트 프로모션" category="eventpromotion" />
 </template>
 
 <script>

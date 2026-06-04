@@ -2,8 +2,8 @@
     <div class="page-content">
         <h2 class="page-title">현재 페이지 경로: {{ currentPath }}</h2>
         <p class="page-desc">
-            이곳은 본문 영역입니다.<br/>
-            추후 <b>{{ currentPath }}</b> 에 해당하는 전용 컴포넌트를 만들어 router.js에 연결할 예정입니다.
+            아직 전용 화면이 준비되지 않은 페이지입니다.<br>
+            추후 <b>{{ currentPath }}</b> 경로에 맞는 전용 컴포넌트를 만들어 router.js에 연결할 예정입니다.
         </p>
     </div>
 </template>
@@ -11,8 +11,7 @@
 <script>
 export default {
     name: 'DefaultPage',
-        computed: {
-        // Vue Router에서 현재 경로 값을 가져옴
+    computed: {
         currentPath() {
             return this.$route.path;
         }

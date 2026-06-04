@@ -1,5 +1,5 @@
 <template>
-    <ProjectListPage title="수능·내신" category="examschool" />
+    <ProjectListPage title="수능/내신" category="examschool" />
 </template>
 
 <script>
